@@ -95,81 +95,131 @@
             background: #9c2b2e;
         }
     </style>
-</head> 
+</head>
 <body>
-<?php
-    $msg=$namesearch="";
-    $existe=false;
-    require_once("config.php");
-    $ms= new mysqli($bd_host,$bd_user,$bd_password,$bd_database);
-    if($ms->connect_error){
-        $echo='<h3 class="erro">Error: ('.$ms->connect_errno.') ('.$ms->connect_error.')</h3>';
-    }
-    if (isset($_POST["Login"]) && isset($_POST["password"])  && isset($_POST["username"])) {
-        $verif = "select * FROM a16078_users WHERE username=?";
-        $statement = $ms->prepare($verif);
-        $statement->bind_param('s',$_POST["username"]);
-        $statement->execute();
-        $statement->bind_result($userid,$username,$phash,$admin);
-        if ($statement->fetch()) {
-            if (password_verify($_POST['password'], $phash)) {
-                $existe=true;
-                $_SESSION["userid"] = $userid;
-                $_SESSION["username"] = $username;
-                $_SESSION["admin"] = $admin;
-                $_SESSION["id"] = session_id();
-                echo "<div class='sucesso'>Bem vindo, ".$_SESSION["username"]."!</div>";
-            }
-            else{
-                echo "<div class='erro'>Login Inválido!</div>";
-            }
+    <?php
+        $msg=$namesearch="";
+        $existe=false;
+        require_once("config.php");
+        $ms= new mysqli($bd_host,$bd_user,$bd_password,$bd_database);
+        if($ms->connect_error){
+            $echo='<h3 class="erro">Error: ('.$ms->connect_errno.') ('.$ms->connect_error.')</h3>';
         }
-        else {
-            echo "<div class='erro'>Login Inválido!</div>";
-        }
-        $statement->close();   
-    }
-    if(isset($_POST['Register'])){
-        if(isset($_POST["username"]) && isset($_POST["password"])){
-            if($_POST["username"]=="" || $_POST["password"]==""){
-                $msg='<h3 class="erro">Preencha todos os campos!</h3>';
-            }
-            else{
-                $admins="insert into a16078_users(username,password,admin) values(?,?,1)";
-                $ordem=$ms->prepare($admins);
-                $phash=password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $ordem->bind_param("ss",$_POST["username"],$phash);
-                if($ordem->execute() && $ordem->affected_rows>0){
-                    $msg='<h3 class="sucesso">O contacto foi inserido!</h3>';
+        if (isset($_POST["Login"]) && isset($_POST["password"])  && isset($_POST["username"])) {
+            $verif = "select * FROM a16078_users WHERE username=?";
+            $statement = $ms->prepare($verif);
+            $statement->bind_param('s',$_POST["username"]);
+            $statement->execute();
+            $statement->bind_result($userid,$username,$phash,$admin);
+            if ($statement->fetch()) {
+                if (password_verify($_POST['password'], $phash)) {
+                    $existe=true;
+                    $_SESSION["userid"] = $userid;
+                    $_SESSION["username"] = $username;
+                    $_SESSION["admin"] = $admin;
+                    $_SESSION["id"] = session_id();
+                    echo "<div class='sucesso'>Bem vindo, ".$_SESSION["username"]."!</div>";
                 }
                 else{
-                    $msg='<h3 class="erro">Error: '.'('.$ms->connect_errno.')'.'('.$ms->connect_error.')</h3>';
+                    echo "<div class='erro'>Login Inválido!</div>";
                 }
-                $ordem->close();
+            }
+            else {
+                echo "<div class='erro'>Login Inválido!</div>";
+            }
+            $statement->close();   
+        }
+        if(isset($_POST['Register'])){
+            if(isset($_POST["username"]) && isset($_POST["password"])){
+                if($_POST["username"]=="" || $_POST["password"]==""){
+                    $msg='<h3 class="erro">Preencha todos os campos!</h3>';
+                }
+                else{
+                    $admins="insert into a16078_users(username,password,admin) values(?,?,1)";
+                    $ordem=$ms->prepare($admins);
+                    $phash=password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $ordem->bind_param("ss",$_POST["username"],$phash);
+                    if($ordem->execute() && $ordem->affected_rows>0){
+                        $msg='<h3 class="sucesso">O contacto foi inserido!</h3>';
+                    }
+                    else{
+                        $msg='<h3 class="erro">Error: '.'('.$ms->connect_errno.')'.'('.$ms->connect_error.')</h3>';
+                    }
+                    $ordem->close();
+                }
+            }
+            else{
+                $msg='<h3 class="erro">Preencha todos os campos!</h3>';
             }
         }
-        else{
-            $msg='<h3 class="erro">Preencha todos os campos!</h3>';
+        if (isset($_POST["end"])){
+            $_SESSION["userid"]=$_SESSION["username"]=$_SESSION["admin"]=$_SESSION["id"]="";
+            $existe=false;
+            // remove all session variables
+            session_unset();
+            // destroy the session
+            session_destroy();
         }
-    }
-    if (isset($_POST["mainpage"])){
-        $mainpage=$_POST["mainpage"];
-    }
-    else{
-        $mainpage=1;
-    }
-    if (isset($_POST["page"])){
-        $page=$_POST["page"];
-    }
-    else{
-        if($mainpage==1){
-            $page=1;
+        // $mainpage=$page="";
+        if (isset($_POST["mainpage"])){
+            $mainpage=$_POST["mainpage"];
         }
         else{
-            $page=3;
+            $mainpage=1;
         }
-    }
-    ?>
+        if (isset($_POST["page"])){
+            $page=$_POST["page"];
+        }
+        else{
+            if($mainpage==1){
+                $page=1;
+            }
+            else{
+                $page=3;
+            }
+        }
+        ?>
+        <div class="container-fluid w-100 pt-3 pb-2 p-0 d-flex justify-content-between" style="background-color: #cd853f;">
+            <button id="submit" class="btn btn-danger m-4 fs-3 invisible" name="balancer" value="dontwork"><i class="bi bi-box-arrow-left"></i> Sair</button>
+            <h1 class="text-center m-4 w-75">Maze Your Way<sup>©</sup>'s Back-Office</h1>
+            <form method="post">
+                <button id="submit" class="btn btn-danger m-4 fs-3" name="end" value="end"><i class="bi bi-box-arrow-left"></i> Sair</button>
+            </form>
+        </div>
+        <?php
+            if (!isset($_SESSION['id']) || $_SESSION['id']!=session_id())  {
+                ?>
+                <div class="w-25 d-flex justify-content-center flex-column m-auto mt-5 p-5 border border-3 border-primary rounded-4" >
+                    <div>
+                        <h2 class="text-center mb-4">Login</h2>
+                    </div>
+                    <div>
+                        <form name="login" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Alberto">
+                                <label for="floatingInput">Username</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mt-4 row">
+                                <div class="col">
+                                    <input class="btn btn-info w-100 text-center " type="submit" value="Entrar" name="Login">
+                                </div>
+                                <div class="col">
+                                    <input class="btn btn-info w-100 text-center" type="submit" value="Registar" name="Register">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            <?php
+            }
+            else{
+                if ($_SESSION["admin"]==1) {
+            ?>
     <div class="container-fluid w-100 p-0">
         <ul class="nav nav-tabs nav-fill" id="myTab1" role="tablist">
             <li class="nav-item" role="presentation">
@@ -243,7 +293,10 @@
             </div>
         </ul>
     </div>
-
+    <?php
+                }
+            }
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
