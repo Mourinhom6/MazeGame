@@ -351,6 +351,84 @@
                     </div>
                 </form>
             </div>
+            <div class="tab-pane fade" id="namesort-tab-pane" role="tabpanel" aria-labelledby="namesort-tab" tabindex="1">
+                <ul class="nav nav-tabs nav-fill" id="myTab6" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nameasc-tab" data-bs-toggle="tab" data-bs-target="#nameasc-tab-pane" type="button" role="tab" aria-controls="nameasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="namedesc-tab" data-bs-toggle="tab" data-bs-target="#namedesc-tab-pane" type="button" role="tab" aria-controls="namedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="Filter3TabContent">
+                    <div class="tab-pane fade <?php if($page==11){echo "show active";}?>" id="nameasc-tab-pane" role="tabpanel" aria-labelledby="nameasc-tab" tabindex="2">
+                        <form method="post" name="page11" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="11">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                    <div class="tab-pane fade <?php if($page==12){echo "show active";}?>" id="namedesc-tab-pane" role="tabpanel" aria-labelledby="namedesc-tab" tabindex="2">
+                        <form method="post" name="page12" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="12">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="scoresort-tab-pane" role="tabpanel" aria-labelledby="scoresort-tab" tabindex="1">
+                <ul class="nav nav-tabs nav-fill" id="myTab7" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="scoreasc-tab" data-bs-toggle="tab" data-bs-target="#scoreasc-tab-pane" type="button" role="tab" aria-controls="scoreasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="scoredesc-tab" data-bs-toggle="tab" data-bs-target="#scoredesc-tab-pane" type="button" role="tab" aria-controls="scoredesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="Filter4TabContent">
+                    <div class="tab-pane fade <?php if($page==13){echo "show active";}?>" id="scoreasc-tab-pane" role="tabpanel" aria-labelledby="scoreasc-tab" tabindex="2">
+                        <form method="post" name="page13" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="13">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                    <div class="tab-pane fade <?php if($page==14){echo "show active";}?>" id="scoredesc-tab-pane" role="tabpanel" aria-labelledby="scoredesc-tab" tabindex="2">
+                        <form method="post" name="page14" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="14">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="timesort-tab-pane" role="tabpanel" aria-labelledby="timesort-tab" tabindex="1">
+                <ul class="nav nav-tabs nav-fill" id="myTab8" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="timeasc-tab" data-bs-toggle="tab" data-bs-target="#timeasc-tab-pane" type="button" role="tab" aria-controls="timeasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="timedesc-tab" data-bs-toggle="tab" data-bs-target="#timedesc-tab-pane" type="button" role="tab" aria-controls="timedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="Filter5TabContent">
+                    <div class="tab-pane fade <?php if($page==15){echo "show active";}?>" id="timeasc-tab-pane" role="tabpanel" aria-labelledby="timeasc-tab" tabindex="2">
+                        <form method="post" name="page15" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="15">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                    <div class="tab-pane fade <?php if($page==16){echo "show active";}?>" id="timedesc-tab-pane" role="tabpanel" aria-labelledby="timedesc-tab" tabindex="2">
+                        <form method="post" name="page16" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="16">
+                            <input type="hidden" name="mainpage" value="2">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
                     
     <?php
