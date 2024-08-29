@@ -100,7 +100,7 @@
     <?php
         $msg=$namesearch="";
         $existe=false;
-        require_once("config.php");
+        require_once("cnfig.php");
         $ms= new mysqli($bd_host,$bd_user,$bd_password,$bd_database);
         if($ms->connect_error){
             $echo='<h3 class="erro">Error: ('.$ms->connect_errno.') ('.$ms->connect_error.')</h3>';
