@@ -68,6 +68,80 @@
         }
     }
     ?>
+    <div class="container-fluid w-100 p-0">
+        <ul class="nav nav-tabs nav-fill" id="myTab1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <!-- Admins Registados  -->
+                <button class="nav-link <?php if($mainpage==1){echo "active";}?>" id="users-tab" data-bs-toggle="tab" data-bs-target="#users-tab-pane" type="button" role="tab" aria-controls="users-tab-pane" aria-selected="<?php echo $mainpage==1 ?'true':'false'; ?>">Utilizadores Registados</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                 <!-- Registos do Jogo  -->
+                <button class="nav-link <?php if($mainpage==2){echo "active";}?>" id="records-tab" data-bs-toggle="tab" data-bs-target="#records-tab-pane" type="button" role="tab" aria-controls="records-tab-pane" aria-selected="<?php echo $mainpage==2 ?'true':'false'; ?>">Histórico de Partidas</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="MainTabContent">
+            <div class="tab-pane fade <?php if($mainpage==1){echo "show active";}?>" id="users-tab-pane" role="tabpanel" aria-labelledby="users-tab" tabindex="0">
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                    <!-- Ver -->
+                    <li class="nav-item" style="width:33%;" role="presentation">
+                        <button class="nav-link <?php if($page==1){echo "active";}?> w-100" id="geral-tab" data-bs-toggle="tab" data-bs-target="#geral-tab-pane" type="button" role="tab" aria-controls="geral-tab-pane" aria-selected="<?php echo $page!=1 ?'false':'true'; ?>" onclick="page1.submit();">Vista Geral</button>
+                    </li>
+                      <!-- Cosultar-->
+                    <div class="dropdown" style="width:33%;">
+                        <button class="btn dropdown-toggle w-100 <?php if($page==2){echo "active";}?>" type="button" id="consulta-dropdown1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo $page==2 ?'true':'false'; ?>">
+                            Consulta
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown1" id="consulta-tab-pane1">
+                            <button class="dropdown-item w-100" type="button" id="usersearch-tab" data-bs-toggle="tab" data-bs-target="#usersearch-tab-pane" aria-controls="usersearch-tab-pane">por nome</button>
+                        </div>
+                    </div>
+                     <!-- Filtrar-->
+
+                    <div class="dropdown" style="width:33%;">
+                        <button class="btn dropdown-toggle w-100 <?php if($page>=7 && $page<=10){echo "active";}?>" type="button" id="consulta-dropdown2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=7 && $page<=10) ?'true':'false'; ?>">
+                            Filtragem
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown2" id="consulta-tab-pane2">
+                            <button class="dropdown-item w-100" type="button" id="usersort-tab" data-bs-toggle="tab" data-bs-target="#usersort-tab-pane" aria-controls="usersort-tab-pane">Ordenar por nome</button>
+                            <button class="dropdown-item w-100" type="button" id="adminsort-tab" data-bs-toggle="tab" data-bs-target="#adminsort-tab-pane" aria-controls="adminsort-tab-pane">Administradores/Não Administradores</button>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    <div class="tab-pane fade <?php if($mainpage==2){echo "show active";}?>" id="records-tab-pane" role="tabpanel" aria-labelledby="records-tab" tabindex="0">
+        <ul class="nav nav-tabs" id="myTab5" role="tablist">
+             <!-- Ver -->
+            <li class="nav-item" role="presentation" style="width:33%;">
+                <button class="nav-link <?php if($page==3){echo "active";}?> w-100" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-tab-pane" type="button" role="tab" aria-controls="history-tab-pane" aria-selected="<?php echo $page!=3 ?'false':'true'; ?>" onclick="page3.submit();">Vista Geral</button>
+            </li>
+             <!-- Consultar -->
+            <div class="dropdown" style="width:33%;">
+                <button class="btn dropdown-toggle w-100 <?php if($page>=4 && $page<=6){echo "active";}?>" type="button" id="consulta-dropdown3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=4 && $page<=6)?'true':'false'; ?>">
+                    Consulta
+                </button>
+                <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown3" id="consulta-tab-pane3">
+                    <button class="dropdown-item w-100" id="gamesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#gamesearch-tab-pane" aria-controls="gamesearch-tab-pane">por nome</button>
+                    <button class="dropdown-item w-100" id="scoresearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresearch-tab-pane" aria-controls="scoresearch-tab-pane">por pontuação</button>
+                    <button class="dropdown-item w-100" id="datesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#datesearch-tab-pane" aria-controls="datesearch-tab-pane">por data de registo</button>
+                </div>
+            </div>
+             <!-- Filtrar -->
+            <div class="dropdown" style="width:33%;">
+                <button class="btn dropdown-toggle w-100 <?php if($page>=11 && $page<=16){echo "active";}?>" type="button" id="consulta-dropdown4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=11 && $page<=16)?'true':'false'; ?>">
+                    Filtragem
+                </button>
+                <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown4" id="consulta-tab-pane4">
+                    <button class="dropdown-item w-100" id="namesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#namesort-tab-pane" aria-controls="namesort-tab-pane">Ordenar por nome</button>
+                    <button class="dropdown-item w-100" id="scoresort-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresort-tab-pane" aria-controls="scoresort-tab-pane">Ordenar por pontuação</button>
+                    <button class="dropdown-item w-100" id="timesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#timesort-tab-pane" aria-controls="timesort-tab-pane">Ordenar por tempo</button>
+                </div>
+            </div>
+        </ul>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
