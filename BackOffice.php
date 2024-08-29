@@ -178,6 +178,7 @@
                 $page=3;
             }
         }
+        // Add Change and Delete Logic
         ?>
         <div class="container-fluid w-100 pt-3 pb-2 p-0 d-flex justify-content-between" style="background-color: #cd853f;">
             <button id="submit" class="btn btn-danger m-4 fs-3 invisible" name="balancer" value="dontwork"><i class="bi bi-box-arrow-left"></i> Sair</button>
@@ -265,6 +266,36 @@
                             <input type="hidden" name="mainpage" value="1">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $totalusers= "select * from a16078_users";
+                            $results= $ms->prepare($totalusers);
+                            $results->execute();
+                            $results->bind_result($iduser,$username, $password, $admin);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                            echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                            echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                            echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($results->fetch()){
+                                echo '<tr><td colspan="4">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $results->close();
+                        ?>
                     </div>
                     <div class="tab-pane fade <?php if($page==2){echo "show active";}?>" id="usersearch-tab-pane" role="tabpanel" aria-labelledby="usersearch-tab" tabindex="1">
                         <form method="post" class="row g-0 align-items-center m-4">
@@ -282,6 +313,39 @@
                                 </div>
                             </div>
                         </form>
+                        <?php
+                            if(isset($_POST['usersearch'])){
+                                $nomeusers= "select * from a16078_users where username=?";
+                                $statement= $ms->prepare($nomeusers);
+                                $statement->bind_param('s',$_POST['nameuser']);
+                                $statement->execute();
+                                $statement->bind_result($iduser,$username, $password, $admin);
+                                echo '<table class="table table-secondary table-striped table-hover">';
+                                echo '<thead>';
+                                echo '<tr>';
+                                echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                                echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                                echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                                echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                                echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody class="table-group-divider">';
+                                while($statement->fetch()){
+                                    echo '<tr><td colspan="4">';
+                                    echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                    echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                    echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                    echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                    echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                    echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                    echo '</form>';
+                                    echo '</td></tr>';
+                                }
+                                echo '</tbody>';
+                                echo '</table>';
+                                $statement->close();
+                            }
+                        ?>
                     </div>
                     <div class="tab-pane fade" id="usersort-tab-pane" role="tabpanel" aria-labelledby="usersort-tab" tabindex="1">
                         <ul class="nav nav-tabs nav-fill" id="myTab3" role="tablist">
@@ -299,6 +363,36 @@
                                     <input type="hidden" name="mainpage" value="1">
                                     <input hidden type="submit" value="Consultar" name="namesearch">
                                 </form>
+                                <?php
+                                    $ordasc= "select * from a16078_users order by username asc";
+                                    $statement= $ms->prepare($ordasc);
+                                    $statement->execute();
+                                    $statement->bind_result($iduser,$username, $password, $admin);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="4">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                        echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                        echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
                             </div>
                             <div class="tab-pane fade" id="ordesc-tab-pane" role="tabpanel" aria-labelledby="ordesc-tab" tabindex="2">
                                 <form method="post" name="page8" class="row g-0 align-items-center m-4">
@@ -306,6 +400,36 @@
                                     <input type="hidden" name="mainpage" value="1">
                                     <input hidden type="submit" value="Consultar" name="namesearch">
                                 </form>
+                                <?php
+                                    $ordesc= "select * from a16078_users order by username desc";
+                                    $statement= $ms->prepare($ordesc);
+                                    $statement->execute();
+                                    $statement->bind_result($iduser,$username, $password, $admin);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="4">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                        echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                        echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -325,6 +449,36 @@
                                     <input type="hidden" name="mainpage" value="1">
                                     <input hidden type="submit" value="Consultar" name="namesearch">
                                 </form>
+                                <?php
+                                    $filteradmin= "select * from a16078_users where admin=1";
+                                    $statement= $ms->prepare($filteradmin);
+                                    $statement->execute();
+                                    $statement->bind_result($iduser,$username, $password, $admin);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="4">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                        echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                        echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
                             </div>
                             <div class="tab-pane fade" id="noadmin-tab-pane" role="tabpanel" aria-labelledby="noadmin-tab" tabindex="2">
                                 <form method="post" name="page10" class="row g-0 align-items-center m-4">
@@ -332,6 +486,36 @@
                                     <input type="hidden" name="mainpage" value="1">
                                     <input hidden type="submit" value="Consultar" name="namesearch">
                                 </form>
+                                <?php
+                                    $noadmin= "select * from a16078_users where admin=0";
+                                    $statement= $ms->prepare($noadmin);
+                                    $statement->execute();
+                                    $statement->bind_result($iduser,$username, $password, $admin);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">ID Utilizador</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Username</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Admin</th>';
+                                    echo '<th scope="col" style="width:25%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="4">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:25%;text-align:center" type="text" name="iduser" value='.$iduser.'>';
+                                        echo '<input style="width:25%;text-align:center" type="text" name="username" value='.$username.'>';
+                                        echo '<input style="width:25%;text-align:center" type="number" name="admin" value='.$admin.'>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:12%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
                             </div>
                         </div>
                     </div>
