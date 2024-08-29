@@ -248,7 +248,6 @@
                         </div>
                     </div>
                      <!-- Filtrar-->
-
                     <div class="dropdown" style="width:33%;">
                         <button class="btn dropdown-toggle w-100 <?php if($page>=7 && $page<=10){echo "active";}?>" type="button" id="consulta-dropdown2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=7 && $page<=10) ?'true':'false'; ?>">
                             Filtragem
@@ -259,263 +258,126 @@
                         </div>
                     </div>
                 </ul>
-            </div>
-    <!-- Note that There is the need to indent from here to the end two times in order to improve the readability -->
-     <!-- Note that the action refered aboved will be executed in the next commit -->
-    <div class="tab-pane fade <?php if($mainpage==2){echo "show active";}?>" id="records-tab-pane" role="tabpanel" aria-labelledby="records-tab" tabindex="0">
-        <ul class="nav nav-tabs" id="myTab5" role="tablist">
-             <!-- Ver -->
-            <li class="nav-item" role="presentation" style="width:33%;">
-                <button class="nav-link <?php if($page==3){echo "active";}?> w-100" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-tab-pane" type="button" role="tab" aria-controls="history-tab-pane" aria-selected="<?php echo $page!=3 ?'false':'true'; ?>" onclick="page3.submit();">Vista Geral</button>
-            </li>
-             <!-- Consultar -->
-            <div class="dropdown" style="width:33%;">
-                <button class="btn dropdown-toggle w-100 <?php if($page>=4 && $page<=6){echo "active";}?>" type="button" id="consulta-dropdown3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=4 && $page<=6)?'true':'false'; ?>">
-                    Consulta
-                </button>
-                <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown3" id="consulta-tab-pane3">
-                    <button class="dropdown-item w-100" id="gamesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#gamesearch-tab-pane" aria-controls="gamesearch-tab-pane">por nome</button>
-                    <button class="dropdown-item w-100" id="scoresearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresearch-tab-pane" aria-controls="scoresearch-tab-pane">por pontuação</button>
-                    <button class="dropdown-item w-100" id="datesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#datesearch-tab-pane" aria-controls="datesearch-tab-pane">por data de registo</button>
+                <div class="tab-content" id="UsersTabContent">
+                    <div class="tab-pane fade <?php if($page==1){echo "show active";}?>" id="geral-tab-pane" role="tabpanel" aria-labelledby="geral-tab" tabindex="1">
+                        <form method="post" name="page1" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="1">
+                            <input type="hidden" name="mainpage" value="1">
+                            <input hidden type="submit" value="Consultar" name="namesearch">
+                        </form>
+                    </div>
+                    <div class="tab-pane fade <?php if($page==2){echo "show active";}?>" id="usersearch-tab-pane" role="tabpanel" aria-labelledby="usersearch-tab" tabindex="1">
+                        <form method="post" class="row g-0 align-items-center m-4">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="nameuser" name="nameuser" placeholder="Nome">
+                                    <label for="nameuser">Nome</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="page" value="2">
+                            <input type="hidden" name="mainpage" value="1">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="usersearch">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="usersort-tab-pane" role="tabpanel" aria-labelledby="usersort-tab" tabindex="1">
+                        <ul class="nav nav-tabs nav-fill" id="myTab3" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="ordasc-tab" data-bs-toggle="tab" data-bs-target="#ordasc-tab-pane" type="button" role="tab" aria-controls="ordasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="ordesc-tab" data-bs-toggle="tab" data-bs-target="#ordesc-tab-pane" type="button" role="tab" aria-controls="ordesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Filter1TabContent">
+                            <div class="tab-pane fade" id="ordasc-tab-pane" role="tabpanel" aria-labelledby="ordasc-tab" tabindex="2">
+                                <form method="post" name="page7" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="7">
+                                    <input type="hidden" name="mainpage" value="1">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="ordesc-tab-pane" role="tabpanel" aria-labelledby="ordesc-tab" tabindex="2">
+                                <form method="post" name="page8" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="8">
+                                    <input type="hidden" name="mainpage" value="1">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="adminsort-tab-pane" role="tabpanel" aria-labelledby="adminsort-tab" tabindex="1">
+                        <ul class="nav nav-tabs nav-fill" id="myTab4" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-tab-pane" type="button" role="tab" aria-controls="admin-tab-pane" aria-selected="false">Administradores</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="noadmin-tab" data-bs-toggle="tab" data-bs-target="#noadmin-tab-pane" type="button" role="tab" aria-controls="noadmin-tab-pane" aria-selected="false">Outros Utilizadores</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Filter2TabContent">
+                            <div class="tab-pane fade" id="admin-tab-pane" role="tabpanel" aria-labelledby="admin-tab" tabindex="2">
+                                <form method="post" name="page9" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="9">
+                                    <input type="hidden" name="mainpage" value="1">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="noadmin-tab-pane" role="tabpanel" aria-labelledby="noadmin-tab" tabindex="2">
+                                <form method="post" name="page10" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="10">
+                                    <input type="hidden" name="mainpage" value="1">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-             <!-- Filtrar -->
-            <div class="dropdown" style="width:33%;">
-                <button class="btn dropdown-toggle w-100 <?php if($page>=11 && $page<=16){echo "active";}?>" type="button" id="consulta-dropdown4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=11 && $page<=16)?'true':'false'; ?>">
-                    Filtragem
-                </button>
-                <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown4" id="consulta-tab-pane4">
-                    <button class="dropdown-item w-100" id="namesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#namesort-tab-pane" aria-controls="namesort-tab-pane">Ordenar por nome</button>
-                    <button class="dropdown-item w-100" id="scoresort-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresort-tab-pane" aria-controls="scoresort-tab-pane">Ordenar por pontuação</button>
-                    <button class="dropdown-item w-100" id="timesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#timesort-tab-pane" aria-controls="timesort-tab-pane">Ordenar por tempo</button>
-                </div>
-            </div>
-        </ul>
-        <div class="tab-content" id="RecordsTabContent">
-            <div class="tab-pane fade <?php if($page==3){echo "show active";}?>" id="history-tab-pane" role="tabpanel" aria-labelledby="history-tab" tabindex="1">
-                <form method="post" name="page3" class="row g-0 align-items-center m-4">
-                    <input type="hidden" name="page" value="3">
-                    <input type="hidden" name="mainpage" value="2">
-                    <input hidden type="submit" value="Consultar" name="namesearch">
-                </form>
-                <?php
-                    $totalgames= "select * from a16078_recordes";
-                    $results= $ms->prepare($totalgames);
-                    $results->execute();
-                    $results->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                    echo '<table class="table table-secondary table-striped table-hover">';
-                    echo '<thead>';
-                    echo '<tr>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                    echo '</tr>';
-                    echo '</thead>';
-                    echo '<tbody class="table-group-divider">';
-                    while($results->fetch()){
-                        echo '<tr><td colspan="6">';
-                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                        echo '</form>';
-                        echo '</td></tr>';
-                    }
-                    echo '</tbody>';
-                    echo '</table>';
-                    $results->close();
-                ?>
-            </div>
-            <div class="tab-pane fade <?php if($page==4){echo "show active";}?>" id="gamesearch-tab-pane" role="tabpanel" aria-labelledby="gamesearch-tab" tabindex="1">
-                <form method="post" class="row g-0 align-items-center m-4">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="namegame" name="namegame" placeholder="Nome">
-                            <label for="namegame">Nome</label>
-                        </div>
-                    </div>
-                    <input type="hidden" name="page" value="4">
-                    <input type="hidden" name="mainpage" value="2">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="namesearch">
-                        </div>
-                    </div>
-                </form>
-                <?php
-                    if(isset($_POST['namesearch'])){
-                        $nomegames= "select * from a16078_recordes where nome=?";
-                        $statement= $ms->prepare($nomegames);
-                        $statement->bind_param('s',$_POST['namegame']);
-                        $statement->execute();
-                        $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                        echo '<table class="table table-secondary table-striped table-hover">';
-                        echo '<thead>';
-                        echo '<tr>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                        echo '</tr>';
-                        echo '</thead>';
-                        echo '<tbody class="table-group-divider">';
-                        while($statement->fetch()){
-                            echo '<tr><td colspan="6">';
-                            echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                            echo '</form>';
-                            echo '</td></tr>';
-                        }
-                        echo '</tbody>';
-                        echo '</table>';
-                        $statement->close();
-                    }
-                ?>
-            </div>
-            <div class="tab-pane fade <?php if($page==5){echo "show active";}?>" id="scoresearch-tab-pane" role="tabpanel" aria-labelledby="scoresearch-tab" tabindex="1">
-                <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="number" class="form-control" id="scoregame" name="scoregame" placeholder="Pontos">
-                            <label for="scoregame">Pontos</label>
-                        </div>
-                    </div>
-                    <input type="hidden" name="page" value="5">
-                    <input type="hidden" name="mainpage" value="2">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="scoresearch">
-                        </div>
-                    </div>
-                </form>
-                <?php
-                    if(isset($_POST['scoresearch'])){
-                        $scoregames= "select * from a16078_recordes where score=?";
-                        $statement= $ms->prepare($scoregames);
-                        $statement->bind_param('i',$_POST['scoregame']);
-                        $statement->execute();
-                        $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                        echo '<table class="table table-secondary table-striped table-hover">';
-                        echo '<thead>';
-                        echo '<tr>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                        echo '</tr>';
-                        echo '</thead>';
-                        echo '<tbody class="table-group-divider">';
-                        while($statement->fetch()){
-                            echo '<tr><td colspan="6">';
-                            echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                            echo '</form>';
-                            echo '</td></tr>';
-                        }
-                        echo '</tbody>';
-                        echo '</table>';
-                        $statement->close();
-                    }
-                ?>
-            </div>
-            <div class="tab-pane fade <?php if($page==6){echo "show active";}?>"  id="datesearch-tab-pane" role="tabpanel" aria-labelledby="datesearch-tab" tabindex="1">
-                <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input type="date" class="form-control" id="dategame" name="dategame" placeholder="Data">
-                            <label for="dategame">Data</label>
-                        </div>
-                    </div>
-                    <input type="hidden" name="page" value="6">
-                    <input type="hidden" name="mainpage" value="2">
-                    <div class="col-md">
-                        <div class="form-floating">
-                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="datesearch">
-                        </div>
-                    </div>
-                </form>
-                <?php
-                    if(isset($_POST['datesearch'])){
-                        $dategames= "select * from a16078_recordes where date_format(Datahora, '%Y-%m-%d')=?";
-                        $statement= $ms->prepare($dategames);
-                        $statement->bind_param('s',$_POST['dategame']);
-                        $statement->execute();
-                        $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                        echo '<table class="table table-secondary table-striped table-hover">';
-                        echo '<thead>';
-                        echo '<tr>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                        echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                        echo '</tr>';
-                        echo '</thead>';
-                        echo '<tbody class="table-group-divider">';
-                        while($statement->fetch()){
-                            echo '<tr><td colspan="6">';
-                            echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                            echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                            echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                            echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                            echo '</form>';
-                            echo '</td></tr>';
-                        }
-                        echo '</tbody>';
-                        echo '</table>';
-                        $statement->close();
-                    }
-                ?>
-            </div>
-            <div class="tab-pane fade" id="namesort-tab-pane" role="tabpanel" aria-labelledby="namesort-tab" tabindex="1">
-                <ul class="nav nav-tabs nav-fill" id="myTab6" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nameasc-tab" data-bs-toggle="tab" data-bs-target="#nameasc-tab-pane" type="button" role="tab" aria-controls="nameasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+            <div class="tab-pane fade <?php if($mainpage==2){echo "show active";}?>" id="records-tab-pane" role="tabpanel" aria-labelledby="records-tab" tabindex="0">
+                <ul class="nav nav-tabs" id="myTab5" role="tablist">
+                    <!-- Ver -->
+                    <li class="nav-item" role="presentation" style="width:33%;">
+                        <button class="nav-link <?php if($page==3){echo "active";}?> w-100" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-tab-pane" type="button" role="tab" aria-controls="history-tab-pane" aria-selected="<?php echo $page!=3 ?'false':'true'; ?>" onclick="page3.submit();">Vista Geral</button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="namedesc-tab" data-bs-toggle="tab" data-bs-target="#namedesc-tab-pane" type="button" role="tab" aria-controls="namedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
-                    </li>
+                    <!-- Consultar -->
+                    <div class="dropdown" style="width:33%;">
+                        <button class="btn dropdown-toggle w-100 <?php if($page>=4 && $page<=6){echo "active";}?>" type="button" id="consulta-dropdown3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=4 && $page<=6)?'true':'false'; ?>">
+                            Consulta
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown3" id="consulta-tab-pane3">
+                            <button class="dropdown-item w-100" id="gamesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#gamesearch-tab-pane" aria-controls="gamesearch-tab-pane">por nome</button>
+                            <button class="dropdown-item w-100" id="scoresearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresearch-tab-pane" aria-controls="scoresearch-tab-pane">por pontuação</button>
+                            <button class="dropdown-item w-100" id="datesearch-tab" type="button" data-bs-toggle="tab" data-bs-target="#datesearch-tab-pane" aria-controls="datesearch-tab-pane">por data de registo</button>
+                        </div>
+                    </div>
+                    <!-- Filtrar -->
+                    <div class="dropdown" style="width:33%;">
+                        <button class="btn dropdown-toggle w-100 <?php if($page>=11 && $page<=16){echo "active";}?>" type="button" id="consulta-dropdown4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="<?php echo ($page>=11 && $page<=16)?'true':'false'; ?>">
+                            Filtragem
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="consulta-dropdown4" id="consulta-tab-pane4">
+                            <button class="dropdown-item w-100" id="namesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#namesort-tab-pane" aria-controls="namesort-tab-pane">Ordenar por nome</button>
+                            <button class="dropdown-item w-100" id="scoresort-tab" type="button" data-bs-toggle="tab" data-bs-target="#scoresort-tab-pane" aria-controls="scoresort-tab-pane">Ordenar por pontuação</button>
+                            <button class="dropdown-item w-100" id="timesort-tab" type="button" data-bs-toggle="tab" data-bs-target="#timesort-tab-pane" aria-controls="timesort-tab-pane">Ordenar por tempo</button>
+                        </div>
+                    </div>
                 </ul>
-                <div class="tab-content" id="Filter3TabContent">
-                    <div class="tab-pane fade <?php if($page==11){echo "show active";}?>" id="nameasc-tab-pane" role="tabpanel" aria-labelledby="nameasc-tab" tabindex="2">
-                        <form method="post" name="page11" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="11">
+                <div class="tab-content" id="RecordsTabContent">
+                    <div class="tab-pane fade <?php if($page==3){echo "show active";}?>" id="history-tab-pane" role="tabpanel" aria-labelledby="history-tab" tabindex="1">
+                        <form method="post" name="page3" class="row g-0 align-items-center m-4">
+                            <input type="hidden" name="page" value="3">
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
                         <?php
-                            $nameasc= "select * from a16078_recordes order by nome asc";
-                            $statement= $ms->prepare($nameasc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            $totalgames= "select * from a16078_recordes";
+                            $results= $ms->prepare($totalgames);
+                            $results->execute();
+                            $results->bind_result($codreg,$nome, $tempo, $score, $datahora);
                             echo '<table class="table table-secondary table-striped table-hover">';
                             echo '<thead>';
                             echo '<tr>';
@@ -528,7 +390,7 @@
                             echo '</tr>';
                             echo '</thead>';
                             echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
+                            while($results->fetch()){
                                 echo '<tr><td colspan="6">';
                                 echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
                                 echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
@@ -543,244 +405,457 @@
                             }
                             echo '</tbody>';
                             echo '</table>';
-                            $statement->close();
+                            $results->close();
                         ?>
                     </div>
-                    <div class="tab-pane fade <?php if($page==12){echo "show active";}?>" id="namedesc-tab-pane" role="tabpanel" aria-labelledby="namedesc-tab" tabindex="2">
-                        <form method="post" name="page12" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="12">
+                    <div class="tab-pane fade <?php if($page==4){echo "show active";}?>" id="gamesearch-tab-pane" role="tabpanel" aria-labelledby="gamesearch-tab" tabindex="1">
+                        <form method="post" class="row g-0 align-items-center m-4">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="namegame" name="namegame" placeholder="Nome">
+                                    <label for="namegame">Nome</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="page" value="4">
                             <input type="hidden" name="mainpage" value="2">
-                            <input hidden type="submit" value="Consultar" name="namesearch">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="namesearch">
+                                </div>
+                            </div>
                         </form>
                         <?php
-                            $namedesc= "select * from a16078_recordes order by nome desc";
-                            $statement= $ms->prepare($namedesc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                            echo '<table class="table table-secondary table-striped table-hover">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
-                                echo '<tr><td colspan="6">';
-                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                                echo '</form>';
-                                echo '</td></tr>';
+                            if(isset($_POST['namesearch'])){
+                                $nomegames= "select * from a16078_recordes where nome=?";
+                                $statement= $ms->prepare($nomegames);
+                                $statement->bind_param('s',$_POST['namegame']);
+                                $statement->execute();
+                                $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                echo '<table class="table table-secondary table-striped table-hover">';
+                                echo '<thead>';
+                                echo '<tr>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody class="table-group-divider">';
+                                while($statement->fetch()){
+                                    echo '<tr><td colspan="6">';
+                                    echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                    echo '</form>';
+                                    echo '</td></tr>';
+                                }
+                                echo '</tbody>';
+                                echo '</table>';
+                                $statement->close();
                             }
-                            echo '</tbody>';
-                            echo '</table>';
-                            $statement->close();
                         ?>
                     </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="scoresort-tab-pane" role="tabpanel" aria-labelledby="scoresort-tab" tabindex="1">
-                <ul class="nav nav-tabs nav-fill" id="myTab7" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="scoreasc-tab" data-bs-toggle="tab" data-bs-target="#scoreasc-tab-pane" type="button" role="tab" aria-controls="scoreasc-tab-pane" aria-selected="false">Ordenar ASC</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="scoredesc-tab" data-bs-toggle="tab" data-bs-target="#scoredesc-tab-pane" type="button" role="tab" aria-controls="scoredesc-tab-pane" aria-selected="false">Ordenar DESC</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="Filter4TabContent">
-                    <div class="tab-pane fade <?php if($page==13){echo "show active";}?>" id="scoreasc-tab-pane" role="tabpanel" aria-labelledby="scoreasc-tab" tabindex="2">
-                        <form method="post" name="page13" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="13">
+                    <div class="tab-pane fade <?php if($page==5){echo "show active";}?>" id="scoresearch-tab-pane" role="tabpanel" aria-labelledby="scoresearch-tab" tabindex="1">
+                        <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="scoregame" name="scoregame" placeholder="Pontos">
+                                    <label for="scoregame">Pontos</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="page" value="5">
                             <input type="hidden" name="mainpage" value="2">
-                            <input hidden type="submit" value="Consultar" name="namesearch">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="scoresearch">
+                                </div>
+                            </div>
                         </form>
                         <?php
-                            $scoreasc= "select * from a16078_recordes order by score asc";
-                            $statement= $ms->prepare($scoreasc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                            echo '<table class="table table-secondary table-striped table-hover">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
-                                echo '<tr><td colspan="6">';
-                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                                echo '</form>';
-                                echo '</td></tr>';
+                            if(isset($_POST['scoresearch'])){
+                                $scoregames= "select * from a16078_recordes where score=?";
+                                $statement= $ms->prepare($scoregames);
+                                $statement->bind_param('i',$_POST['scoregame']);
+                                $statement->execute();
+                                $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                echo '<table class="table table-secondary table-striped table-hover">';
+                                echo '<thead>';
+                                echo '<tr>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody class="table-group-divider">';
+                                while($statement->fetch()){
+                                    echo '<tr><td colspan="6">';
+                                    echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                    echo '</form>';
+                                    echo '</td></tr>';
+                                }
+                                echo '</tbody>';
+                                echo '</table>';
+                                $statement->close();
                             }
-                            echo '</tbody>';
-                            echo '</table>';
-                            $statement->close();
                         ?>
                     </div>
-                    <div class="tab-pane fade <?php if($page==14){echo "show active";}?>" id="scoredesc-tab-pane" role="tabpanel" aria-labelledby="scoredesc-tab" tabindex="2">
-                        <form method="post" name="page14" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="14">
+                    <div class="tab-pane fade <?php if($page==6){echo "show active";}?>"  id="datesearch-tab-pane" role="tabpanel" aria-labelledby="datesearch-tab" tabindex="1">
+                        <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="dategame" name="dategame" placeholder="Data">
+                                    <label for="dategame">Data</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="page" value="6">
                             <input type="hidden" name="mainpage" value="2">
-                            <input hidden type="submit" value="Consultar" name="namesearch">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="datesearch">
+                                </div>
+                            </div>
                         </form>
                         <?php
-                            $scoredesc= "select * from a16078_recordes order by score desc";
-                            $statement= $ms->prepare($scoredesc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                            echo '<table class="table table-secondary table-striped table-hover">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
-                                echo '<tr><td colspan="6">';
-                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                                echo '</form>';
-                                echo '</td></tr>';
+                            if(isset($_POST['datesearch'])){
+                                $dategames= "select * from a16078_recordes where date_format(Datahora, '%Y-%m-%d')=?";
+                                $statement= $ms->prepare($dategames);
+                                $statement->bind_param('s',$_POST['dategame']);
+                                $statement->execute();
+                                $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                echo '<table class="table table-secondary table-striped table-hover">';
+                                echo '<thead>';
+                                echo '<tr>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                echo '</tr>';
+                                echo '</thead>';
+                                echo '<tbody class="table-group-divider">';
+                                while($statement->fetch()){
+                                    echo '<tr><td colspan="6">';
+                                    echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                    echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                    echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                    echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                    echo '</form>';
+                                    echo '</td></tr>';
+                                }
+                                echo '</tbody>';
+                                echo '</table>';
+                                $statement->close();
                             }
-                            echo '</tbody>';
-                            echo '</table>';
-                            $statement->close();
                         ?>
                     </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="timesort-tab-pane" role="tabpanel" aria-labelledby="timesort-tab" tabindex="1">
-                <ul class="nav nav-tabs nav-fill" id="myTab8" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="timeasc-tab" data-bs-toggle="tab" data-bs-target="#timeasc-tab-pane" type="button" role="tab" aria-controls="timeasc-tab-pane" aria-selected="false">Ordenar ASC</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="timedesc-tab" data-bs-toggle="tab" data-bs-target="#timedesc-tab-pane" type="button" role="tab" aria-controls="timedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="Filter5TabContent">
-                    <div class="tab-pane fade <?php if($page==15){echo "show active";}?>" id="timeasc-tab-pane" role="tabpanel" aria-labelledby="timeasc-tab" tabindex="2">
-                        <form method="post" name="page15" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="15">
-                            <input type="hidden" name="mainpage" value="2">
-                            <input hidden type="submit" value="Consultar" name="namesearch">
-                        </form>
-                        <?php
-                            $timeasc= "select * from a16078_recordes order by tempo asc";
-                            $statement= $ms->prepare($timeasc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                            echo '<table class="table table-secondary table-striped table-hover">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
-                                echo '<tr><td colspan="6">';
-                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                                echo '</form>';
-                                echo '</td></tr>';
-                            }
-                            echo '</tbody>';
-                            echo '</table>';
-                            $statement->close();
-                        ?>
+                    <div class="tab-pane fade" id="namesort-tab-pane" role="tabpanel" aria-labelledby="namesort-tab" tabindex="1">
+                        <ul class="nav nav-tabs nav-fill" id="myTab6" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="nameasc-tab" data-bs-toggle="tab" data-bs-target="#nameasc-tab-pane" type="button" role="tab" aria-controls="nameasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="namedesc-tab" data-bs-toggle="tab" data-bs-target="#namedesc-tab-pane" type="button" role="tab" aria-controls="namedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Filter3TabContent">
+                            <div class="tab-pane fade <?php if($page==11){echo "show active";}?>" id="nameasc-tab-pane" role="tabpanel" aria-labelledby="nameasc-tab" tabindex="2">
+                                <form method="post" name="page11" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="11">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $nameasc= "select * from a16078_recordes order by nome asc";
+                                    $statement= $ms->prepare($nameasc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
+                            <div class="tab-pane fade <?php if($page==12){echo "show active";}?>" id="namedesc-tab-pane" role="tabpanel" aria-labelledby="namedesc-tab" tabindex="2">
+                                <form method="post" name="page12" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="12">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $namedesc= "select * from a16078_recordes order by nome desc";
+                                    $statement= $ms->prepare($namedesc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab-pane fade <?php if($page==16){echo "show active";}?>" id="timedesc-tab-pane" role="tabpanel" aria-labelledby="timedesc-tab" tabindex="2">
-                        <form method="post" name="page16" class="row g-0 align-items-center m-4">
-                            <input type="hidden" name="page" value="16">
-                            <input type="hidden" name="mainpage" value="2">
-                            <input hidden type="submit" value="Consultar" name="namesearch">
-                        </form>
-                        <?php
-                            $timedesc= "select * from a16078_recordes order by tempo desc";
-                            $statement= $ms->prepare($timedesc);
-                            $statement->execute();
-                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
-                            echo '<table class="table table-secondary table-striped table-hover">';
-                            echo '<thead>';
-                            echo '<tr>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
-                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
-                            echo '</tr>';
-                            echo '</thead>';
-                            echo '<tbody class="table-group-divider">';
-                            while($statement->fetch()){
-                                echo '<tr><td colspan="6">';
-                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
-                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
-                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
-                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
-                                echo '</form>';
-                                echo '</td></tr>';
-                            }
-                            echo '</tbody>';
-                            echo '</table>';
-                            $statement->close();
-                            ?>
+                    <div class="tab-pane fade" id="scoresort-tab-pane" role="tabpanel" aria-labelledby="scoresort-tab" tabindex="1">
+                        <ul class="nav nav-tabs nav-fill" id="myTab7" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="scoreasc-tab" data-bs-toggle="tab" data-bs-target="#scoreasc-tab-pane" type="button" role="tab" aria-controls="scoreasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="scoredesc-tab" data-bs-toggle="tab" data-bs-target="#scoredesc-tab-pane" type="button" role="tab" aria-controls="scoredesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Filter4TabContent">
+                            <div class="tab-pane fade <?php if($page==13){echo "show active";}?>" id="scoreasc-tab-pane" role="tabpanel" aria-labelledby="scoreasc-tab" tabindex="2">
+                                <form method="post" name="page13" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="13">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $scoreasc= "select * from a16078_recordes order by score asc";
+                                    $statement= $ms->prepare($scoreasc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
+                            <div class="tab-pane fade <?php if($page==14){echo "show active";}?>" id="scoredesc-tab-pane" role="tabpanel" aria-labelledby="scoredesc-tab" tabindex="2">
+                                <form method="post" name="page14" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="14">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $scoredesc= "select * from a16078_recordes order by score desc";
+                                    $statement= $ms->prepare($scoredesc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="timesort-tab-pane" role="tabpanel" aria-labelledby="timesort-tab" tabindex="1">
+                        <ul class="nav nav-tabs nav-fill" id="myTab8" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="timeasc-tab" data-bs-toggle="tab" data-bs-target="#timeasc-tab-pane" type="button" role="tab" aria-controls="timeasc-tab-pane" aria-selected="false">Ordenar ASC</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="timedesc-tab" data-bs-toggle="tab" data-bs-target="#timedesc-tab-pane" type="button" role="tab" aria-controls="timedesc-tab-pane" aria-selected="false">Ordenar DESC</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Filter5TabContent">
+                            <div class="tab-pane fade <?php if($page==15){echo "show active";}?>" id="timeasc-tab-pane" role="tabpanel" aria-labelledby="timeasc-tab" tabindex="2">
+                                <form method="post" name="page15" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="15">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $timeasc= "select * from a16078_recordes order by tempo asc";
+                                    $statement= $ms->prepare($timeasc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
+                            <div class="tab-pane fade <?php if($page==16){echo "show active";}?>" id="timedesc-tab-pane" role="tabpanel" aria-labelledby="timedesc-tab" tabindex="2">
+                                <form method="post" name="page16" class="row g-0 align-items-center m-4">
+                                    <input type="hidden" name="page" value="16">
+                                    <input type="hidden" name="mainpage" value="2">
+                                    <input hidden type="submit" value="Consultar" name="namesearch">
+                                </form>
+                                <?php
+                                    $timedesc= "select * from a16078_recordes order by tempo desc";
+                                    $statement= $ms->prepare($timedesc);
+                                    $statement->execute();
+                                    $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                                    echo '<table class="table table-secondary table-striped table-hover">';
+                                    echo '<thead>';
+                                    echo '<tr>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                                    echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                                    echo '</tr>';
+                                    echo '</thead>';
+                                    echo '<tbody class="table-group-divider">';
+                                    while($statement->fetch()){
+                                        echo '<tr><td colspan="6">';
+                                        echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                        echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                        echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                        echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                        echo '</form>';
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</tbody>';
+                                    echo '</table>';
+                                    $statement->close();
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <?php
                 }
             }
