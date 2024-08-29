@@ -260,9 +260,8 @@
                     </div>
                 </ul>
             </div>
-        </div>
-    </div>
-   
+    <!-- Note that There is the need to indent from here to the end two times in order to improve the readability -->
+     <!-- Note that the action refered aboved will be executed in the next commit -->
     <div class="tab-pane fade <?php if($mainpage==2){echo "show active";}?>" id="records-tab-pane" role="tabpanel" aria-labelledby="records-tab" tabindex="0">
         <ul class="nav nav-tabs" id="myTab5" role="tablist">
              <!-- Ver -->
@@ -512,6 +511,40 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $nameasc= "select * from a16078_recordes order by nome asc";
+                            $statement= $ms->prepare($nameasc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                        ?>
                     </div>
                     <div class="tab-pane fade <?php if($page==12){echo "show active";}?>" id="namedesc-tab-pane" role="tabpanel" aria-labelledby="namedesc-tab" tabindex="2">
                         <form method="post" name="page12" class="row g-0 align-items-center m-4">
@@ -519,6 +552,40 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $namedesc= "select * from a16078_recordes order by nome desc";
+                            $statement= $ms->prepare($namedesc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                        ?>
                     </div>
                 </div>
             </div>
@@ -538,6 +605,40 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $scoreasc= "select * from a16078_recordes order by score asc";
+                            $statement= $ms->prepare($scoreasc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                        ?>
                     </div>
                     <div class="tab-pane fade <?php if($page==14){echo "show active";}?>" id="scoredesc-tab-pane" role="tabpanel" aria-labelledby="scoredesc-tab" tabindex="2">
                         <form method="post" name="page14" class="row g-0 align-items-center m-4">
@@ -545,6 +646,40 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $scoredesc= "select * from a16078_recordes order by score desc";
+                            $statement= $ms->prepare($scoredesc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                        ?>
                     </div>
                 </div>
             </div>
@@ -564,6 +699,40 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $timeasc= "select * from a16078_recordes order by tempo asc";
+                            $statement= $ms->prepare($timeasc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                        ?>
                     </div>
                     <div class="tab-pane fade <?php if($page==16){echo "show active";}?>" id="timedesc-tab-pane" role="tabpanel" aria-labelledby="timedesc-tab" tabindex="2">
                         <form method="post" name="page16" class="row g-0 align-items-center m-4">
@@ -571,11 +740,47 @@
                             <input type="hidden" name="mainpage" value="2">
                             <input hidden type="submit" value="Consultar" name="namesearch">
                         </form>
+                        <?php
+                            $timedesc= "select * from a16078_recordes order by tempo desc";
+                            $statement= $ms->prepare($timedesc);
+                            $statement->execute();
+                            $statement->bind_result($codreg,$nome, $tempo, $score, $datahora);
+                            echo '<table class="table table-secondary table-striped table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Código Registo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Nome</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Tempo</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Pontuação</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Data e Hora</th>';
+                            echo '<th scope="col" style="width:16%;text-align:center">Opções</th>';
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody class="table-group-divider">';
+                            while($statement->fetch()){
+                                echo '<tr><td colspan="6">';
+                                echo '<form method="post" style="display:flex;justify-content:space-between;align-items:center">';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="codreg" value='.$codreg.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="nome" value='.$nome.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="tempo" value='.$tempo.'>';
+                                echo '<input style="width:16%;text-align:center" type="text" name="score" value='.$score.'>';
+                                echo '<input readonly style="width:16%;text-align:center" type="text" name="datahora" value="'.$datahora.'">';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="altera"><i class="bi bi-pencil-square"></i></button>';
+                                echo '<button style="width:8%;text-align:center" type="submit" class="fabutton" name="elimina"><i class="bi bi-trash-fill"></i></button>';
+                                echo '</form>';
+                                echo '</td></tr>';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                            $statement->close();
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-                    
+    </div>
+</div>
     <?php
                 }
             }
