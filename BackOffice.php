@@ -179,6 +179,62 @@
             }
         }
         // Add Change and Delete Logic
+        if(isset($_POST["altera"])){
+            if(isset($_POST["iduser"])){
+                $qr = "update a16078_users set username=?, admin=? where iduser=?";
+                $ordem = $ms->prepare($qr);
+                $ordem->bind_param("sii", $_POST["username"], $_POST["admin"], $_POST["iduser"]); 
+                if ($ordem->execute() && $ordem->affected_rows > 0){
+                    echo "<script>window.location.href='backoffice.php'</script>";
+                }
+                else{
+                    echo "Erro";
+                }
+            }
+            else{
+                if(isset($_POST["codreg"])){
+                    $qr = "update a16078_recordes set nome=?, tempo=?, score=? where codreg=?";
+                    $ordem = $ms->prepare($qr);
+                    $ordem->bind_param("ssii", $_POST["nome"], $_POST["tempo"], $_POST["score"], $_POST["codreg"]); 
+                    if ($ordem->execute() && $ordem->affected_rows > 0){
+                        echo "<script>window.location.href='backoffice.php'</script>";
+                    }
+                    else{
+                        echo "Erro";
+                    }
+                }
+            }
+            $ordem->close();
+        }
+        else{
+            if(isset($_POST["elimina"])){
+                if(isset($_POST["iduser"])){
+                    $qr = "delete from a16078_users where iduser=?";
+                    $ordem = $ms->prepare($qr);
+                    $ordem->bind_param("i", $_POST["iduser"]); 
+                    if ($ordem->execute() && $ordem->affected_rows > 0){
+                        echo "<script>window.location.href='backoffice.php'</script>";
+                    }
+                    else{
+                        echo "Erro";
+                    }
+                }
+                else{
+                    if(isset($_POST["codreg"])){
+                        $qr = "delete from a16078_recordes where codreg=?";
+                        $ordem = $ms->prepare($qr);
+                        $ordem->bind_param("i", $_POST["codreg"]); 
+                        if ($ordem->execute() && $ordem->affected_rows > 0){
+                            echo "<script>window.location.href='backoffice.php'</script>";
+                        }
+                        else{
+                            echo "Erro";
+                        }
+                    }
+                }
+                $ordem->close();
+            }
+        }
         ?>
         <div class="container-fluid w-100 pt-3 pb-2 p-0 d-flex justify-content-between" style="background-color: #cd853f;">
             <button id="submit" class="btn btn-danger m-4 fs-3 invisible" name="balancer" value="dontwork"><i class="bi bi-box-arrow-left"></i> Sair</button>
