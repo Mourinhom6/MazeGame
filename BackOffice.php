@@ -292,7 +292,67 @@
                 </div>
             </div>
         </ul>
-    </div>
+        <div class="tab-content" id="RecordsTabContent">
+            <div class="tab-pane fade <?php if($page==3){echo "show active";}?>" id="history-tab-pane" role="tabpanel" aria-labelledby="history-tab" tabindex="1">
+                <form method="post" name="page3" class="row g-0 align-items-center m-4">
+                    <input type="hidden" name="page" value="3">
+                    <input type="hidden" name="mainpage" value="2">
+                    <input hidden type="submit" value="Consultar" name="namesearch">
+                </form>
+            </div>
+            <div class="tab-pane fade <?php if($page==4){echo "show active";}?>" id="gamesearch-tab-pane" role="tabpanel" aria-labelledby="gamesearch-tab" tabindex="1">
+                <form method="post" class="row g-0 align-items-center m-4">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="namegame" name="namegame" placeholder="Nome">
+                            <label for="namegame">Nome</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="page" value="4">
+                    <input type="hidden" name="mainpage" value="2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="namesearch">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade <?php if($page==5){echo "show active";}?>" id="scoresearch-tab-pane" role="tabpanel" aria-labelledby="scoresearch-tab" tabindex="1">
+                <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="scoregame" name="scoregame" placeholder="Pontos">
+                            <label for="scoregame">Pontos</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="page" value="5">
+                    <input type="hidden" name="mainpage" value="2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="scoresearch">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade <?php if($page==6){echo "show active";}?>"  id="datesearch-tab-pane" role="tabpanel" aria-labelledby="datesearch-tab" tabindex="1">
+                <form method="post" class="row g-0 align-items-center m-4" action="<?php echo $_SERVER["PHP_SELF"];?>">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="dategame" name="dategame" placeholder="Data">
+                            <label for="dategame">Data</label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="page" value="6">
+                    <input type="hidden" name="mainpage" value="2">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input class="btn btn-info w-100 text-center p-3" type="submit" value="Consultar" name="datesearch">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+                    
     <?php
                 }
             }
