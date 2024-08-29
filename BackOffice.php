@@ -9,7 +9,92 @@
     <title>Back-Office</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <style>
+        :root{
+            --bs-body-bg: #ffca9b;
+            --bs-link-color: black;
+            --bs-link-hover-color: white;
+            --bs-border-color: #a14c00;
+        }
+        .nav-tabs{
+            --bs-nav-tabs-link-active-bg: #ffe8d4 !important; 
+        }
+        .border-primary{
+            border-color: #cd853f !important;
+            background-color: #ffe8d4 !important;
+        }
+        .dropdown-menu {
+            --bs-dropdown-link-active-bg: #ffe8d4 !important;
+            --bs-dropdown-link-active-color: black !important;
+        }
+        .fabutton{
+            background-color: transparent;
+            border: none;
+        }
+        input{
+            background-color: transparent;
+            border: none;
+            padding: 0px;
+        }
+        .erro{
+            background-color:red;
+            color:white;
+            width:100%;
+            padding:20px;
+            text-align:center;
+        }
+        .sucesso{
+            background-color:green;
+            color: white;
+            width:100%;
+            padding:20px;
+            text-align:center;
+        }
+        * { 
+            -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+            -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+            box-sizing: border-box;         /* Opera/IE 8+ */
+        }
+        fieldset {
+            float: left;
+            margin: auto;
+        }
+        label {
+            width: 100px;
+            text-align: right;
+            display: inline-block;
+        }
+        input, select {
+            width: 300px;
+        }
+        .buttons {
+            margin: 5px 105px;
+        }
+        table {
+            float: left;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }	
+        th {
+            height: 50px;
+            text-align: left;
+        }
+        td {
+            padding: 15px;
+            height: 50px;
+            vertical-align: bottom;
+        }
+        .alert {
+            font-size: 120%;
+            text-align: center;
+            color: white;
+            width: 100%;
+            border: 1px solid #e84e4f;
+            background: #9c2b2e;
+        }
+    </style>
 </head> 
 <body>
 <?php
@@ -65,6 +150,23 @@
         }
         else{
             $msg='<h3 class="erro">Preencha todos os campos!</h3>';
+        }
+    }
+    if (isset($_POST["mainpage"])){
+        $mainpage=$_POST["mainpage"];
+    }
+    else{
+        $mainpage=1;
+    }
+    if (isset($_POST["page"])){
+        $page=$_POST["page"];
+    }
+    else{
+        if($mainpage==1){
+            $page=1;
+        }
+        else{
+            $page=3;
         }
     }
     ?>
