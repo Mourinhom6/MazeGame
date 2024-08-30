@@ -360,6 +360,9 @@ function geramap(dif){
                     case 5: 
                         t+='<td class="monster1" id="'+ids+'">&nbsp;</td>';
                         break;
+                    case 6:
+                        t+='<td class="monster1" id="'+ids+'">&nbsp;</td>';
+                        break;
                 }
             }
         }
@@ -520,6 +523,36 @@ function tdedit(troca, tds){
                 document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
             }
             break;
+            case 6:
+                if(nmonsters<5){
+                    if(map[nmaps][i][j]==4){
+                        for(k=0; k<ncoins; k++){
+                            if(tempcoins[k][0]==tempid){
+                                tempcoins.splice(k, 1);
+                                tempcoins.push([-1, 0]);
+                                ncoins--;
+                                document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                            }
+                        }
+                    }
+                    if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
+                        for(k=0; k<nmonsters; k++){
+                            if(tempmonsters[k][0]==tempid){
+                                tempmonsters.splice(k, 1);
+                                tempmonsters.push([-1, -1, -1]);
+                                nmonsters--;
+                            }
+                        }
+                    }
+                    map[nmaps][i][j]=troca;
+                    tds.className="monster1";
+                    tempmonsters[nmonsters][0]=tempid;
+                    tempmonsters[nmonsters][1]=1;
+                    tempmonsters[nmonsters][2]=tempid;
+                    nmonsters++;
+                    document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
+                }
+                break;
         }
     }
 }
@@ -532,8 +565,27 @@ function savemap(){
 function records(){
     window.location.href="records.php";
 }
+var mode=0;
+var moves;
+var coinscoll=0;
 
-// Ãdd Monster Movement Logic  function monstermove(){
+var tempcoins= new Array(5);
+var tempmonsters= new Array(5);
+for(i=0; i<5; i++){
+    tempcoins[i]=[];
+    tempmonsters[i]=[];
+    tempcoins[i][0]=-1;
+    tempcoins[i][1]=0;
+    tempmonsters[i][0]=-1;
+    tempmonsters[i][1]=-1;
+    tempmonsters[i][2]=-1;
+}
+var inregist=0;
+
+var idmuda=0, coinint=0;
+
+function monstermove(){
+}
 function goback(){
     if(tabelas==1){
         document.getElementById("tabela").style.display="none";

@@ -24,7 +24,7 @@
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <div class="card text-bg-success">
                 <div class="card-body">
-                    <h2 class="card-title text-center">Fácil</h2>
+                    <h2 class="card-title text-center" onclick="geramap(1)">Fácil</h2>
                     <p class="card-text">
                         <ul>
                             <li>Inimigos movem-se lentamente</li>
@@ -37,7 +37,7 @@
             <div class="col-sm-3">
                 <div class="card text-bg-warning text-white">
                 <div class="card-body">
-                    <h2 class="card-title text-center">Médio</h2>
+                    <h2 class="card-title text-center" onclick="geramap(2)">Médio</h2>
                     <p class="card-text">
                         <ul>
                             <li>Inimigos movem-se mais rápido</li>
@@ -50,7 +50,7 @@
             <div class="col-sm-3">
                 <div class="card text-bg-danger">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Difícil</h2>
+                        <h2 class="card-title text-center" onclick="geramap(3)">Difícil</h2>
                         <p class="card-text">
                             <ul>
                                 <li>Inimigos movem-se mais rápido</li>
