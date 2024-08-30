@@ -335,6 +335,37 @@ function geramap(dif){
         difficult=dif;
     }
     mode=1;
+    do{
+        mapnumber=(Math.ceil(Math.random()*nmaps))-1;
+    }while(mapuse[mapnumber]==1);
+    mapuse[mapnumber]=1;
+    t='<table id="tabela">';
+    for(i=0; i<29; i++){
+        t+='<tr>';
+        for(j=0; j<40; j++){
+            ids=i*40+j+1;
+            if(iplay==i && jplay==j){
+                t+='<td class="jogador" id="'+ids+'">&nbsp;</td>';
+            }
+            else{
+                switch(map[mapnumber][i][j]){
+                    case 1: t+='<td class="chao" id="'+ids+'">&nbsp;</td>';
+                        break;
+                    case 2: t+='<td class="parede" id="'+ids+'">&nbsp;</td>';
+                        break;
+                    case 3: t+='<td class="fim" id="'+ids+'">&nbsp;</td>';
+                        break;
+                    case 4: t+='<td class="coin" id="'+ids+'">&nbsp;</td>';
+                        break;
+                    case 5: 
+                        t+='<td class="monster1" id="'+ids+'">&nbsp;</td>';
+                        break;
+                }
+            }
+        }
+        t+='</tr>';
+    }
+    t+='</table>';
     document.getElementById("tabeladiv").innerHTML=t;
     p=document.getElementById(idplay);
     document.getElementById("tabela").style.display="table";
@@ -460,6 +491,35 @@ function tdedit(troca, tds){
                 }
                 break;
             case 5: // Monsters
+            if(nmonsters<5){
+                if(map[nmaps][i][j]==4){
+                    for(k=0; k<ncoins; k++){
+                        if(tempcoins[k][0]==tempid){
+                            tempcoins.splice(k, 1);
+                            tempcoins.push([-1, 0]);
+                            ncoins--;
+                            document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                        }
+                    }
+                }
+                if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
+                    for(k=0; k<nmonsters; k++){
+                        if(tempmonsters[k][0]==tempid){
+                            tempmonsters.splice(k, 1);
+                            tempmonsters.push([-1, -1, -1]);
+                            nmonsters--;
+                        }
+                    }
+                }
+                map[nmaps][i][j]=troca;
+                tds.className="monster1";
+                tempmonsters[nmonsters][0]=tempid;
+                tempmonsters[nmonsters][1]=2;
+                tempmonsters[nmonsters][2]=tempid;
+                nmonsters++;
+                document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
+            }
+            break;
         }
     }
 }
