@@ -1,3 +1,22 @@
+var tecla;
+var i, j, t='', jplay=0, iplay=5, ids, endi=14, endj=39;
+var idplay=iplay*40+jplay+1;
+var pts=0;
+var timeall, timemap;
+var mapcomplete=0;
+var tabelas=1;
+
+
+var mapnumber=0;
+var nmaps=5;
+var p;
+var mm1,c1,s1,m1,mm2,c2,s2,m2, flag=0;
+mm1=c1=s1=m1=mm2=c2=s2=m2=0;
+var tempomap, tempoall;
+var difficult;
+for(i=0; i<nmaps; i++){
+    mapuse[i]=0;
+}
 function choosedif(){
     tabelas=0;
     for(i=1; i<=4; i++){
@@ -6,6 +25,33 @@ function choosedif(){
     document.getElementById("diftable").style.display="flex";
     document.getElementById("voltar").style.visibility="visible";
 }
+function geramap(dif){
+    tabelas=1;
+    if(mapcomplete==0){
+        mapcomplete=1;
+        difficult=dif;
+    }
+    mode=1;
+    document.getElementById("tabeladiv").innerHTML=t;
+    p=document.getElementById(idplay);
+    document.getElementById("tabela").style.display="table";
+    document.getElementById("stats").style.display="flex";
+    document.getElementById("points").innerHTML="Pontos: "+pts;
+    document.getElementById("mapcomplete").innerHTML="Mapa "+mapcomplete+"/5";
+    document.getElementById("diftable").style.display="none";
+    if(difficult>1){
+        moves=setInterval(monstermove, 750);
+    }
+    else{
+        moves=setInterval(monstermove, 1000);
+    }
+    if(flag!=1){
+        timeall=setInterval(cronoall, 10);
+        flag=1;
+    }
+    timemap=setInterval(cronomap, 10);
+}
+
 
 function howplay(){
     tabelas=0;
