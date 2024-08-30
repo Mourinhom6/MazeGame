@@ -8,14 +8,14 @@
 	<link rel="stylesheet" href="Index.css">
 </head>
 <body>
-    <div id="header">
+        <div id="header">
             <button class="myButton" id="voltar" onclick="goback()">i class="bi bi-box-arrow-left"></i></button>
-            <h1>Maze Your Way<sup>©</sup></h1>
-            <button class="myButton" id="som">i class="bi bi-volume-mute-fill"></i></button>
+                <h1>Maze Your Way<sup>©</sup></h1>
+            <button class="myButton" id="som" onclick="sons()"><i class="bi bi-volume-mute-fill"></i></button>
         </div>
         <div id="options">
-            <button class="myButton" id="button1">Jogar</button>
-            <button class="myButton" id="button2">Como Jogar</button>
+            <button class="myButton" id="button1" onclick="choosedif()">Jogar</button>
+            <button class="myButton" id="button2" onclick="howplay()">Como Jogar</button>
             <button class="myButton" id="button3">Crie um mapa!</button>
             <button class="myButton" id="button4">Classificações</button>
         </div>

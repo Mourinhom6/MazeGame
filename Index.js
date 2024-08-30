@@ -1,3 +1,20 @@
+function choosedif(){
+    tabelas=0;
+    for(i=1; i<=4; i++){
+        document.getElementById("button"+i).style.display="none";
+    }
+    document.getElementById("diftable").style.display="flex";
+    document.getElementById("voltar").style.visibility="visible";
+}
+
+function howplay(){
+    tabelas=0;
+    for(i=1; i<=4; i++){
+        document.getElementById("button"+i).style.display="none";
+    }
+    document.getElementById("voltar").style.visibility="visible";
+    document.getElementById("comojogar").style.display="block";
+}
 function goback(){
     if(tabelas==1){
         document.getElementById("tabela").style.display="none";
@@ -60,5 +77,60 @@ function goback(){
             document.getElementById("button"+i).style.display="inline-block";
         }
         document.getElementById("voltar").style.visibility="hidden";
+    }
+}
+function sons(){
+    if(som==1){
+        document.getElementById("som").innerHTML='<i class="bi bi-volume-mute-fill"></i>';
+        som=0;
+        switch(mapcomplete){
+            case 0:
+                music0.pause();
+                break;
+            case 1:
+                music1.pause();
+                break;
+            case 2:
+                music2.pause();
+                break;
+            case 3:
+                music3.pause();
+                break;
+            case 4:
+                music4.pause();
+                break;
+            case 5:
+                music5.pause();
+                break;
+        }
+    }
+    else{
+        document.getElementById("som").innerHTML='<i class="bi bi-volume-up-fill"></i>';
+        som=1;
+        switch(mapcomplete){
+            case 0:
+                music0.play();
+                break;
+            case 1:
+                music0.pause();
+                music1.play();
+                break;
+            case 2:
+                music1.pause();
+                music2.play();
+                break;
+            case 3:
+                music2.pause();
+                music3.play();
+                break;
+            case 4:
+                music3.pause();
+                music4.play();
+                break;
+            case 5:
+                music4.pause();
+                music5.play();
+                break;
+        }
     }
 }
