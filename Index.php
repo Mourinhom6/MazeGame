@@ -49,16 +49,80 @@
             </div>
             <div class="col-sm-3">
                 <div class="card text-bg-danger">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Difícil</h2>
-                    <p class="card-text">
-                        <ul>
-                            <li>Inimigos movem-se mais rápido</li>
-                            <li>Moedas são obrigatórias</li>
-                        </ul>
-                    </p>
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Difícil</h2>
+                        <p class="card-text">
+                            <ul>
+                                <li>Inimigos movem-se mais rápido</li>
+                                <li>Moedas são obrigatórias</li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
-                </div>
+            </div>
+        </div>
+        <div id="tabeladiv"></div>
+        <div id="stats">
+            <div>
+                <h2 id="mapcomplete">Mapa 1/5</h2>
+            </div>
+            <div>
+                <h2>Tempo geral:</h2>
+                <p id="tempoall">00:00:00</p>
+            </div>
+            <div>
+                <h2>Tempo mapa atual:</h2>
+                <p id="tempomap">00:00:00</p>
+            </div>
+            <div>
+                <h2 id="points">Pontos: 0</h2>
+            </div>
+        </div>
+        <div id="edit">
+            <div id="container">
+                <h2>Bloco:</h2>
+                <img src="coin.png">
+                <img src="monster2.png">
+                <img src="player.png">
+            </div>
+            <div id="labels">
+                <h2>Legenda:</h2>
+                <p id="ncoin">Moedas (x5)</p>
+                <p id="nmonsterh">Inimigo (x5)</p>
+                <p>Jogador</p>
+            </div>
+            <div id="container">
+                <h2>Bloco:</h2>
+                <img src="chao.jpg">
+                <img src="parede2.png">
+                <img src="end.png">
+            </div>
+            <div id="labels">
+                <h2>Legenda:</h2>
+                <p>Chão</p>
+                <p>Parede</p>
+                <p>Fim</p>
+            </div>
+        </div>
+        <div id="savemap">
+            <button class="myButton" id="button5">Salvar mapa</button>
+        </div>
+        <div id="howto">
+            <div id="comojogar">
+                <p>Movimente a sua personagem (<img src="player.png">) usando as setas do teclado, de forma a chegar ao final do labirinto (<img src="end.png">).
+                    Colete as moedas (<img src="coin.png">) para ganhar pontos e evite os inimigos (<img src="monster1.png">), senão perderá o jogo. Para ganhar, tem de completar 5 mapas diferentes de labirintos!</p>
+            </div>
+        </div>
+        <div id="howto">
+            <div id="winner">
+                <h2>Parabéns! Ganhou!</h2>
+                <p>fsg</p>
+            </div>
+        </div>
+        <div id="howto">
+            <div id="loser">
+                <h2>Perdeu! Tente novamente!</h2>
+                <p>fsg</p>
             </div>
         </div>
     <script src="scriptmaze.js"></script>
