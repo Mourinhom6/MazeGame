@@ -57,6 +57,10 @@ function choosedif(){
     document.getElementById("diftable").style.display="flex";
     document.getElementById("voltar").style.visibility="visible";
 }
+function cronoall(){
+}
+function cronomap(){
+}
 function geramap(dif){
     tabelas=1;
     if(mapcomplete==0){
@@ -83,8 +87,6 @@ function geramap(dif){
     }
     timemap=setInterval(cronomap, 10);
 }
-
-
 function howplay(){
     tabelas=0;
     for(i=1; i<=4; i++){
@@ -92,6 +94,51 @@ function howplay(){
     }
     document.getElementById("voltar").style.visibility="visible";
     document.getElementById("comojogar").style.display="block";
+}
+function makemap(){
+    mode=2;
+    saving=1;
+    t='<table id="tabela">';
+    for(i=0; i<29; i++){
+        t+='<tr>';
+        for(j=0; j<40; j++){
+            ids=i*40+j+1;
+            map[nmaps][i][j]=2;
+            if(iplay==i && jplay==j){
+                t+='<td class="jogador" id="'+ids+'">&nbsp;</td>';
+            }
+            else{
+                if(endi==i && endj==j){
+                    t+='<td class="fim" id="'+ids+'">&nbsp;</td>';
+                    map[nmaps][i][j]=3;
+                }
+                else{
+                    if(i==0 || j==0 || i==28 || j==39){
+                        t+='<td class="parede" id="'+ids+'">&nbsp;</td>';
+                    }
+                    else{
+                        t+='<td class="parede" id="'+ids+'" onclick="tdedit(troca, this)">&nbsp;</td>';
+                    }
+                }
+            }
+        }
+        t+='</tr>';
+    }
+    t+='</table>';
+    document.getElementById("tabeladiv").innerHTML=t;
+    for(i=1; i<=4; i++){
+        document.getElementById("button"+i).style.display="none";
+    }
+    document.getElementById("tabela").style.display="table";
+    document.getElementById("edit").style.display="flex";
+    document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+    document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
+    document.getElementById("savemap").style.display="flex";
+    document.getElementById("voltar").style.visibility="visible";
+}
+var troca=0;
+var tempid;
+function tdedit(troca, tds){
 }
 var saving=0;
 function savemap(){
