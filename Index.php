@@ -16,8 +16,8 @@
         <div id="options">
             <button class="myButton" id="button1" onclick="choosedif()">Jogar</button>
             <button class="myButton" id="button2" onclick="howplay()">Como Jogar</button>
-            <button class="myButton" id="button3">Crie um mapa!</button>
-            <button class="myButton" id="button4">Classificações</button>
+            <button class="myButton" id="button3" onclick="makemap()">Crie um mapa!</button>
+            <button class="myButton" id="button4" onclick="records()">Classificações</button>
         </div>
         <div id="diftable" class="row">
             <h1 class="mt-5 mb-5" style="font-size: 50px;">Escolha uma dificuldade:</h1>
@@ -81,9 +81,9 @@
         <div id="edit">
             <div id="container">
                 <h2>Bloco:</h2>
-                <img src="coin.png">
-                <img src="monster2.png">
-                <img src="player.png">
+                <img src="coin.png" onclick="troca=4">
+                <img src="monster2.png" onclick="troca=5">
+                <img src="player.png" onclick="troca=0">
             </div>
             <div id="labels">
                 <h2>Legenda:</h2>
@@ -93,9 +93,9 @@
             </div>
             <div id="container">
                 <h2>Bloco:</h2>
-                <img src="chao.jpg">
-                <img src="parede2.png">
-                <img src="end.png">
+                <img src="chao.jpg" onclick="troca=1">
+                <img src="parede2.png" onclick="troca=2">
+                <img src="end.png" onclick="troca=0">
             </div>
             <div id="labels">
                 <h2>Legenda:</h2>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div id="savemap">
-            <button class="myButton" id="button5">Salvar mapa</button>
+            <button class="myButton" id="button5" onclick="savemap()">Salvar mapa</button>
         </div>
         <div id="howto">
             <div id="comojogar">

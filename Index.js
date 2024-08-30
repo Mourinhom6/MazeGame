@@ -1,12 +1,44 @@
 var tecla;
 var i, j, t='', jplay=0, iplay=5, ids, endi=14, endj=39;
+var map=new Array(20);
+var coins=new Array(5), ncoins=0;
+var monsters= new Array(5), nmonsters=0;
+var mapuse=new Array(20);
 var idplay=iplay*40+jplay+1;
 var pts=0;
 var timeall, timemap;
 var mapcomplete=0;
 var tabelas=1;
-
-
+for(i=0; i<20; i++){
+    map[i]=[];
+    for(j=0; j<29; j++){
+        map[i][j]=[];
+        
+    }
+}
+for(i=0; i<20; i++){
+    coins[i]=[];
+    monsters[i]=[];
+    for(j=0; j<5; j++){
+        coins[i][j]=[];
+        coins[i][j][0]=-1;
+        coins[i][j][1]=-1;
+        monsters[i][j]=[];
+        monsters[i][j][0]=-1;
+        monsters[i][j][1]=-1;
+        monsters[i][j][2]=-1;
+    }
+}
+//  Try to create something like: 
+// map[0]
+// coins[0]
+// monsters[0]
+// map[1]
+// coins[1]
+// monsters[1]
+// map[2]
+// coins[2]
+// monsters[2]
 var mapnumber=0;
 var nmaps=5;
 var p;
@@ -60,6 +92,12 @@ function howplay(){
     }
     document.getElementById("voltar").style.visibility="visible";
     document.getElementById("comojogar").style.display="block";
+}
+var saving=0;
+function savemap(){
+    saving=0;
+    p=document.getElementById(idplay);
+    moves=setInterval(monstermove, 1000);
 }
 function records(){
     window.location.href="records.php";
