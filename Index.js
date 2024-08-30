@@ -58,8 +58,74 @@ function choosedif(){
     document.getElementById("voltar").style.visibility="visible";
 }
 function cronoall(){
+        mm1++;
+        if(mm1==10){
+            c1++;
+            mm1=0;
+        }
+        if(c1==10){
+            s1++;
+            c1=0;
+        }
+        if(s1==60){
+            m1++;
+            s1=0;
+        }
+        if(s1<10){
+            st1="0"+s1;
+        }
+        else st1=s1;
+        if(m1<10){
+            mt1="0"+m1;
+        }
+        else mt1=m1;
+        tempoall=mt1+":"+st1+":"+c1+""+mm1;
+        document.getElementById("tempoall").innerHTML=tempoall;
+        if(mapcomplete==1 && som){
+            music0.pause();
+            music1.play();
+        }
+        if(mapcomplete==2 && som){
+            music1.pause();
+            music2.play();
+        }
+        if(mapcomplete==3 && som){
+            music2.pause();
+            music3.play();
+        }
+        if(mapcomplete==4 && som){
+            music3.pause();
+            music4.play();
+        }
+        if(mapcomplete==5 && som){
+            music4.pause();
+            music5.play();
+        }
 }
 function cronomap(){
+    mm2++;
+    if(mm2==10){
+        c2++;
+        mm2=0;
+    }
+    if(c2==10){
+        s2++;
+        c2=0;
+    }
+    if(s2==60){
+        m2++;
+        s2=0;
+    }
+    if(s2<10){
+        st2="0"+s2;
+    }
+    else st2=s2;
+    if(m2<10){
+        mt2="0"+m2;
+    }
+    else mt2=m2;
+    tempomap=mt2+":"+st2+":"+c2+""+mm2;
+    document.getElementById("tempomap").innerHTML=tempomap;
 }
 function geramap(dif){
     tabelas=1;
