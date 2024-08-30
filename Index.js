@@ -406,6 +406,62 @@ function makemap(){
 var troca=0;
 var tempid;
 function tdedit(troca, tds){
+    if(saving==1){
+        tempid=tds.id;
+        j=(tempid-1)%40;
+        i=parseInt((tempid-1)/40);
+        if(troca==1 || troca==2){
+            if(map[nmaps][i][j]==4){
+                for(k=0; k<ncoins; k++){
+                    if(tempcoins[k][0]==tempid){
+                        tempcoins.splice(k, 1);
+                        tempcoins.push([-1, 0]);
+                        ncoins--;
+                        document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                    }
+                }
+            }
+            if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
+                for(k=0; k<nmonsters; k++){
+                    if(tempmonsters[k][0]==tempid){
+                        tempmonsters.splice(k, 1);
+                        tempmonsters.push([-1, -1, -1]);
+                        nmonsters--;
+                        document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
+                    }
+                }
+            }
+            map[nmaps][i][j]=troca;
+        }
+        switch(troca){
+            case 1: // chao
+                tds.className="chao";
+                break;  
+            case 2: // parede
+                tds.className="parede";
+                break;
+            case 4: // Coins
+                if(ncoins<5){
+                    if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
+                        for(k=0; k<nmonsters; k++){
+                            if(tempmonsters[k][0]==tempid){
+                                tempmonsters.splice(k, 1);
+                                tempmonsters.push([-1, -1, -1]);
+                                nmonsters--;
+                                document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
+                            }
+                        }
+                    }
+                    map[nmaps][i][j]=troca;
+                    tds.className="coin";
+                    tempcoins[ncoins][0]=tempid;
+                    ncoins++;
+                    document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                }
+                break;
+            case 5: // Monsters
+        }
+    }
 }
 var saving=0;
 function savemap(){
