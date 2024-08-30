@@ -61,6 +61,11 @@ function howplay(){
     document.getElementById("voltar").style.visibility="visible";
     document.getElementById("comojogar").style.display="block";
 }
+function records(){
+    window.location.href="records.php";
+}
+
+// Ãdd Monster Movement Logic  function monstermove(){
 function goback(){
     if(tabelas==1){
         document.getElementById("tabela").style.display="none";
@@ -125,6 +130,19 @@ function goback(){
         document.getElementById("voltar").style.visibility="hidden";
     }
 }
+var som=0;
+var music0= new Audio("musica.mp3");
+var music1= new Audio("lvl1.mp3");
+var music2= new Audio("lvl2.mp3");
+var music3= new Audio("lvl3.mp3");
+var music4= new Audio("lvl4.mp3");
+var music5= new Audio("lvl5.mp3");
+music0.loop=true;
+music1.loop=true;
+music2.loop=true;
+music3.loop=true;
+music4.loop=true;
+music5.loop=true;
 function sons(){
     if(som==1){
         document.getElementById("som").innerHTML='<i class="bi bi-volume-mute-fill"></i>';
