@@ -823,6 +823,22 @@ var copy;
 function gameresult(){
     switch(result){ //case handling
         case -2:    //lose
+            for(i=0; i<coins[mapnumber].length; i++){
+                coins[mapnumber][i][1]=0;
+            }
+            for(i=0; i<monsters[mapnumber].length; i++){
+                monsters[mapnumber][i][2]=monsters[mapnumber][i][0];
+            }
+            iplay=5;
+            jplay=0;
+            idplay=iplay*40+jplay+1;
+            ncoins=0;
+            nmonsters=0;
+            mapnumber=0;
+            coinscoll=0;
+            for(i=0; i<nmaps; i++){
+                mapuse[i]=0;
+            }
             msg='<form name="registos" method="POST"><input class="nameuser" type="text" name="nome" placeholder="Insira o seu nome" autocomplete="off"><input type="hidden" name="time" value="'+tempoall+'"><input type="hidden" name="score" value="'+pts+'"><input type="submit" class="btn btn-dark ps-5 pe-5" name="registar" value="OK" onclick="refresher.submit();"></form>';
             document.getElementById("loser").style.display="block";
             document.getElementById("tabela").style.display="none";
@@ -834,7 +850,50 @@ function gameresult(){
             clearInterval(timemap);
             clearInterval(timeall);
             break;
+            case -1:
+                for(i=0; i<nmonsters; i++){
+                    coinint=0;
+                }	
+                saving=1;
+                iplay=5;
+                jplay=0;
+                idplay=iplay*40+jplay+1;
+        case 1:
+        case 2:
+            for(i=0; i<coins[mapnumber].length; i++){
+                coins[mapnumber][i][1]=0;
+            }
+            for(i=0; i<monsters[mapnumber].length; i++){
+                monsters[mapnumber][i][2]=monsters[mapnumber][i][0];
+            }
+            iplay=5;
+            jplay=0;
+            idplay=iplay*40+jplay+1;
+            ncoins=0;
+            nmonsters=0;
+            coinscoll=0;
+            clearInterval(moves);
+            clearInterval(timemap);
+            mm2=c2=s2=m2=0;
+            document.getElementById("mapcomplete").innerHTML="Mapa "+mapcomplete+"/5";
+            geramap(difficult);
+            break;
         case 3: // winn
+            for(i=0; i<coins[mapnumber].length; i++){
+                coins[mapnumber][i][1]=0;
+            }
+            for(i=0; i<monsters[mapnumber].length; i++){
+                monsters[mapnumber][i][2]=monsters[mapnumber][i][0];
+            }
+            iplay=5;
+            jplay=0;
+            idplay=iplay*40+jplay+1;
+            nmonsters=0;
+            ncoins=0;
+            coinscoll=0;
+            for(i=0; i<nmaps; i++){
+                mapuse[i]=0;
+            }
             document.getElementById("winner").style.display="block";
             document.getElementById("tabela").style.display="none";
             document.getElementById("stats").style.display="none";
