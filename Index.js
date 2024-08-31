@@ -673,9 +673,61 @@ for(i=0; i<5; i++){
     tempmonsters[i][2]=-1;
 }
 var inregist=0;
-
+function movimedit(){
+    if(saving==0){
+        switch(map[nmaps][iplay][jplay]){
+            case 1:
+                p.className="chao";
+                break;
+            case 2:
+                p.className="parede";
+                break;
+            case 4:
+                p.className="coin";
+                break;
+            case 5:
+                p.className="chao";
+                break;
+            case 6:
+                p.className="chao";
+                break;
+        }
+        switch(tecla){
+            case 37: 
+                if(jplay>0 && map[nmaps][iplay][jplay-1]!=2)
+                    jplay--;
+                break;
+            case 39: 
+                if(jplay<40 && map[nmaps][iplay][jplay+1]!=2)
+                    jplay++;
+                break;
+            case 38: 
+                if(iplay>0 && map[nmaps][iplay-1][jplay]!=2)
+                    iplay--;
+                break;
+            case 40: 
+                if(iplay<29 && map[nmaps][iplay+1][jplay]!=2)
+                    iplay++;
+                break;
+        }
+        tecla=0;
+        idplay=iplay*40+jplay+1;
+        p=document.getElementById(idplay);
+        for(i=0; i<nmonsters; i++){
+            if(tempmonsters[i][2]==idplay){
+                result=-1;
+                gameresult();
+            }
+        }
+        if(iplay==endi && jplay==endj){
+            result=1;
+            gameresult();
+        }
+        p=document.getElementById(idplay);
+        p.className="jogador";
+    }
+}
 var idmuda=0, coinint=0;
-
 function monstermove(){
 }
 function goback(){
