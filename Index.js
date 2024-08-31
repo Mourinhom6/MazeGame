@@ -565,6 +565,10 @@ function savemap(){
 function records(){
     window.location.href="records.php";
 }
+function mover(t){
+    tecla=t.keyCode? t.keyCode : t.charCode;
+    movimenta();
+}
 var mode=0;
 var moves;
 var coinscoll=0;
@@ -606,6 +610,26 @@ function movimenta(){
                         break;
                 }
             }
+            else{
+                switch(tecla){
+                    case 37: 
+                        if(jplay>0 && map[mapnumber][iplay][jplay-1]!=2)
+                            jplay--;
+                        break;
+                    case 39: 
+                        if(jplay<40 && map[mapnumber][iplay][jplay+1]!=2)
+                            jplay++;
+                        break;
+                    case 38: 
+                        if(iplay>0 && map[mapnumber][iplay-1][jplay]!=2)
+                            iplay--;
+                        break;
+                    case 40: 
+                        if(iplay<29 && map[mapnumber][iplay+1][jplay]!=2)
+                            iplay++;
+                        break;
+                }
+            }
             idplay=iplay*40+jplay+1;
             for(i=0; i<coins[mapnumber].length; i++){
                 if(coins[mapnumber][i][0]==idplay && coins[mapnumber][i][1]==0){
@@ -621,6 +645,19 @@ function movimenta(){
                     gameresult();
                 }
             }
+            if(iplay==endi && jplay==endj){
+                mapcomplete++;
+                if(mapcomplete==6){
+                    result=3;
+                }
+                else{
+                    result=2;
+                }
+                gameresult();
+            }
+            p=document.getElementById(idplay);
+            p.className="jogador";
+            tecla=0;
         }
     }
 }
