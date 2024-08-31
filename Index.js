@@ -729,6 +729,57 @@ function movimedit(){
 }
 var idmuda=0, coinint=0;
 function monstermove(){
+    if(mode==2){
+        for(i=0; i<nmonsters; i++){
+            coinint=0;
+            for(j=0; j<ncoins; j++){
+                if(tempmonsters[i][2]==tempcoins[j][0]){
+                    document.getElementById(tempmonsters[i][2]).className="coin";
+                    coinint=1;
+                }
+            }
+            if(coinint==0){
+                document.getElementById(tempmonsters[i][2]).className="chao";
+            }
+            do{
+                tempmonsters[i][1]=(Math.ceil(Math.random()*4));
+                switch(tempmonsters[i][1]){
+                    case 1:
+                        idmuda=40;
+                        break;
+                    case 2:
+                        idmuda=-1;
+                        break;
+                    case 3:
+                        idmuda=1;
+                        break;
+                    case 4:
+                        idmuda=-40;
+                        break;
+                }
+            }while(document.getElementById(parseInt(tempmonsters[i][2])+parseInt(idmuda)).className=="parede" || document.getElementById(parseInt(tempmonsters[i][2])+parseInt(idmuda)).className=="fim");
+            tempmonsters[i][2]=parseInt(tempmonsters[i][2])+parseInt(idmuda);
+            document.getElementById(parseInt(tempmonsters[i][2])).className="monster"+tempmonsters[i][1];
+            if(tempmonsters[i][2]==idplay){
+                result=-1;
+                gameresult();
+            }
+        }
+    }
+    else{
+        nmonsters=0;
+        ncoins=0;
+        for(i=0; i<monsters[mapnumber].length; i++){
+            if(monsters[mapnumber][i][0]!=-1){
+                nmonsters++;
+            }
+        }
+        for(i=0; i<coins[mapnumber].length; i++){
+            if(coins[mapnumber][i][0]!=-1){
+                ncoins++;
+            }
+        }
+    }
 }
 function goback(){
     if(tabelas==1){
