@@ -1,0 +1,154 @@
+:root{
+    --bs-warning-rgb: 224, 169, 5;
+    --bs-body-bg: white;
+    --bs-link-color: black;
+    --bs-link-hover-color: rgb(102, 102, 102);
+    --bs-border-color: #000000;
+}
+.nav-tabs{
+    --bs-nav-tabs-link-bg: white !important;
+    --bs-nav-tabs-link-active-bg: #838383 !important;
+}
+.nav-tabs .nav-link{
+    border-color:#3a3a3a;
+    --bs-nav-tabs-link-active-border-color: black;
+}
+body{
+    background-image: url("fundo.jpg");
+    background-size: 100vw 100vh;
+    margin: 0px;
+    box-sizing: border-box;
+    color: black;
+}
+table{
+    width: 801px;
+    border: 0px;
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+}
+tr{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    border-spacing: 0px;
+}
+td{
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    font-size: 80px;
+    color: white;
+}
+.nameuser{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin-right: 5px;
+}
+input::placeholder{
+    color: black;
+}
+h2:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.parede{
+    background-image: url("parede2.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.chao{
+    background-image: url("chao.jpg");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+#tabeladiv{
+    float: left;
+    box-sizing: border-box;
+    margin: 0px 0px 0px 20px;
+    line-height: 1;
+}
+.jogador{
+    background-image: url("player.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.coin{
+    background-image: url("coing.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.monster4{
+    background-image: url("monster4g.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.monster1{
+    background-image: url("monster1g.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.monster3{
+    background-image: url("monster3g.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.monster2{
+    background-image: url("monster2g.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+.fim{
+    background-image: url("end.png");
+    background-repeat: none;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+#tabela{
+    display: none;
+    border: 1px solid #d9b99b;
+    box-sizing: border-box;
+}
+#options{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
