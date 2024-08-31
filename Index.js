@@ -779,6 +779,72 @@ function monstermove(){
                 ncoins++;
             }
         }
+        for(i=0; i<nmonsters; i++){
+            coinint=0;
+            for(j=0; j<ncoins; j++){
+                if(monsters[mapnumber][i][2]==parseInt(coins[mapnumber][j][0]) && coins[mapnumber][j][1]==0){
+                    document.getElementById(monsters[mapnumber][i][2]).className="coin";
+                    coinint=1;
+                }
+            }
+            if(coinint==0){
+                document.getElementById(monsters[mapnumber][i][2]).className="chao";
+            }
+            do{
+                monsters[mapnumber][i][1]=(Math.ceil(Math.random()*4));
+                switch(monsters[mapnumber][i][1]){
+                    case 1:
+                        idmuda=40;
+                        break;
+                    case 2:
+                        idmuda=-1;
+                        break;
+                    case 3:
+                        idmuda=1;
+                        break;
+                    case 4:
+                        idmuda=-40;
+                        break;
+                }
+            }while(document.getElementById(parseInt(monsters[mapnumber][i][2])+parseInt(idmuda)).className=="parede" || document.getElementById(parseInt(monsters[mapnumber][i][2])+parseInt(idmuda)).className=="fim");
+            monsters[mapnumber][i][2]=parseInt(monsters[mapnumber][i][2])+parseInt(idmuda);
+            document.getElementById(parseInt(monsters[mapnumber][i][2])).className="monster"+monsters[mapnumber][i][1];
+            if(monsters[mapnumber][i][2]==idplay){
+                result=-2;
+                nmonsters=0;
+                ncoins=0;
+                gameresult();
+            }
+        }
+    }
+}
+var result;
+var copy;
+function gameresult(){
+    switch(result){ //case handling
+        case -2:    //lose
+            msg='<form name="registos" method="POST"><input class="nameuser" type="text" name="nome" placeholder="Insira o seu nome" autocomplete="off"><input type="hidden" name="time" value="'+tempoall+'"><input type="hidden" name="score" value="'+pts+'"><input type="submit" class="btn btn-dark ps-5 pe-5" name="registar" value="OK" onclick="refresher.submit();"></form>';
+            document.getElementById("loser").style.display="block";
+            document.getElementById("tabela").style.display="none";
+            document.getElementById("stats").style.display="none";
+            document.getElementById("loser").innerHTML="<h2>Perdeu. Tente Novamente!</h2><p>Tempo:<br>"+tempoall+"</p><p>Pontos:<br>"+pts+"</p>"+msg;
+            mm1=c1=s1=m1=mm2=c2=s2=m2=0;
+            pts=0;
+            clearInterval(moves);
+            clearInterval(timemap);
+            clearInterval(timeall);
+            break;
+        case 3: // winn
+            document.getElementById("winner").style.display="block";
+            document.getElementById("tabela").style.display="none";
+            document.getElementById("stats").style.display="none";
+            pts+=difficult*500;
+            msg='<form name="registos" method="POST"><input class="nameuser" type="text" name="nome" placeholder="Insira o seu nome" autocomplete="off"><input type="hidden" name="time" value="'+tempoall+'"><input type="hidden" name="score" value="'+pts+'"><input type="submit" class="btn btn-dark ps-5 pe-5" name="registar" value="OK" onclick="refresher.submit();"></form>';
+            document.getElementById("winner").innerHTML="<h2>Parabéns! Ganhou!</h2><p>Tempo:<br>"+tempoall+"</p><p>Pontos:<br>"+pts+"</p>"+msg;
+            clearInterval(moves);
+            clearInterval(timemap);
+            clearInterval(timeall);
+            break;
     }
 }
 function goback(){
