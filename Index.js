@@ -568,7 +568,62 @@ function records(){
 var mode=0;
 var moves;
 var coinscoll=0;
-
+function movimenta(){
+    if(mode==2){
+        movimedit();
+    }
+    else{
+        if(mode==1){
+            if(map[mapnumber][iplay][jplay]==2){
+                p.className="parede";
+            }
+            else{
+                p.className="chao";
+            }
+            if(difficult>2){
+                ncoins=0;
+                for(i=0; i<coins[mapnumber].length; i++){
+                    if(coins[mapnumber][i][0]!=-1){
+                        ncoins++;
+                    }
+                }
+                switch(tecla){
+                    case 37: 
+                        if(jplay>0 && map[mapnumber][iplay][jplay-1]!=2)
+                            jplay--;
+                        break;
+                    case 39: 
+                        if(jplay<40 && ((map[mapnumber][iplay][jplay+1]!=2 && map[mapnumber][iplay][jplay+1]!=3) || (coinscoll==ncoins && map[mapnumber][iplay][jplay+1]==3)))
+                            jplay++;
+                        break;
+                    case 38: 
+                        if(iplay>0 && map[mapnumber][iplay-1][jplay]!=2)
+                            iplay--;
+                        break;
+                    case 40: 
+                        if(iplay<29 && map[mapnumber][iplay+1][jplay]!=2)
+                            iplay++;
+                        break;
+                }
+            }
+            idplay=iplay*40+jplay+1;
+            for(i=0; i<coins[mapnumber].length; i++){
+                if(coins[mapnumber][i][0]==idplay && coins[mapnumber][i][1]==0){
+                    coins[mapnumber][i][1]=1;
+                    coinscoll++;
+                    pts+=(difficult*100);
+                    document.getElementById("points").innerHTML="Pontos: "+pts;
+                }
+            }
+            for(i=0; i<monsters[mapnumber].length; i++){
+                if(monsters[mapnumber][i][2]==idplay){
+                    result=-2;
+                    gameresult();
+                }
+            }
+        }
+    }
+}
 var tempcoins= new Array(5);
 var tempmonsters= new Array(5);
 for(i=0; i<5; i++){
