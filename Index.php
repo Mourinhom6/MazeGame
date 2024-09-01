@@ -7,9 +7,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<link rel="stylesheet" href="Index.css">
 </head>
-<body>
+<body onkeydown="mover(event);">
         <div id="header">
-            <button class="myButton" id="voltar" onclick="goback()">i class="bi bi-box-arrow-left"></i></button>
+            <button class="myButton" id="voltar" onclick="goback()"><i class="bi bi-box-arrow-left"></i></button>
                 <h1>Maze Your Way<sup>©</sup></h1>
             <button class="myButton" id="som" onclick="sons()"><i class="bi bi-volume-mute-fill"></i></button>
         </div>

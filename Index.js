@@ -494,35 +494,35 @@ function tdedit(troca, tds){
                 }
                 break;
             case 5: // Monsters
-            if(nmonsters<5){
-                if(map[nmaps][i][j]==4){
-                    for(k=0; k<ncoins; k++){
-                        if(tempcoins[k][0]==tempid){
-                            tempcoins.splice(k, 1);
-                            tempcoins.push([-1, 0]);
-                            ncoins--;
-                            document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                if(nmonsters<5){
+                    if(map[nmaps][i][j]==4){
+                        for(k=0; k<ncoins; k++){
+                            if(tempcoins[k][0]==tempid){
+                                tempcoins.splice(k, 1);
+                                tempcoins.push([-1, 0]);
+                                ncoins--;
+                                document.getElementById("ncoin").innerHTML="Moedas (x"+(5-ncoins)+")";
+                            }
                         }
                     }
-                }
-                if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
-                    for(k=0; k<nmonsters; k++){
-                        if(tempmonsters[k][0]==tempid){
-                            tempmonsters.splice(k, 1);
-                            tempmonsters.push([-1, -1, -1]);
-                            nmonsters--;
+                    if(map[nmaps][i][j]==5 || map[nmaps][i][j]==6){
+                        for(k=0; k<nmonsters; k++){
+                            if(tempmonsters[k][0]==tempid){
+                                tempmonsters.splice(k, 1);
+                                tempmonsters.push([-1, -1, -1]);
+                                nmonsters--;
+                            }
                         }
                     }
+                    map[nmaps][i][j]=troca;
+                    tds.className="monster1";
+                    tempmonsters[nmonsters][0]=tempid;
+                    tempmonsters[nmonsters][1]=2;
+                    tempmonsters[nmonsters][2]=tempid;
+                    nmonsters++;
+                    document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
                 }
-                map[nmaps][i][j]=troca;
-                tds.className="monster1";
-                tempmonsters[nmonsters][0]=tempid;
-                tempmonsters[nmonsters][1]=2;
-                tempmonsters[nmonsters][2]=tempid;
-                nmonsters++;
-                document.getElementById("nmonsterh").innerHTML="Inimigo (x"+(5-nmonsters)+")";
-            }
-            break;
+                break;
             case 6:
                 if(nmonsters<5){
                     if(map[nmaps][i][j]==4){
@@ -853,12 +853,55 @@ function gameresult(){
             case -1:
                 for(i=0; i<nmonsters; i++){
                     coinint=0;
+                    for(j=0; j<ncoins; j++){
+                        if(tempmonsters[i][2]==tempcoins[j][0]){
+                            document.getElementById(tempmonsters[i][2]).className="coin";
+                            coinint=1;
+                        }
+                    }
+                    if(coinint==0){
+                        document.getElementById(tempmonsters[i][2]).className="chao";
+                    }
+                    tempmonsters[i][2]=tempmonsters[i][0];
+                    document.getElementById(tempmonsters[i][0]).className="monster1";
                 }	
                 saving=1;
                 iplay=5;
                 jplay=0;
                 idplay=iplay*40+jplay+1;
+                p=document.getElementById(idplay);
+                p.className="jogador";
+                clearInterval(moves);
+                break;
         case 1:
+            for(i=0; i<ncoins; i++){
+                coins[nmaps][i][0]=tempcoins[i][0];
+                coins[nmaps][i][1]=tempcoins[i][1];
+                tempcoins[i][0]=-1;
+            }
+            for(i=0; i<nmonsters; i++){
+                monsters[nmaps][i][0]=tempmonsters[i][0];
+                monsters[nmaps][i][1]=tempmonsters[i][1];
+                monsters[nmaps][i][2]=tempmonsters[i][0];
+                tempmonsters[i][0]=-1;
+                tempmonsters[i][1]=-1;
+                tempmonsters[i][2]=-1;
+            }
+            nmaps++;
+            for(i=1; i<=4; i++){
+                document.getElementById("button"+i).style.display="inline-block";
+            }
+            document.getElementById("tabela").style.display="none";
+            document.getElementById("edit").style.display="none";
+            document.getElementById("savemap").style.display="none";
+            iplay=5;
+            jplay=0;
+            ncoins=0;
+            nmonsters=0;
+            idplay=iplay*40+jplay+1;
+            p=document.getElementById(idplay);
+            clearInterval(moves);
+            break;
         case 2:
             for(i=0; i<coins[mapnumber].length; i++){
                 coins[mapnumber][i][1]=0;
