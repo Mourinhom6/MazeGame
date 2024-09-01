@@ -486,6 +486,15 @@ function tdedit(troca, tds){
                             }
                         }
                     }
+                    if(map[nmaps][i][j]==4){ //IMPEDIR PERDA DE MOEDAS
+                        for(k=0; k<ncoins; k++){
+                            if(tempcoins[k][0]==tempid){
+                                tempcoins.splice(k, 1);
+                                tempcoins.push([-1, 0]);
+                                ncoins--;
+                            }
+                        }
+                    }
                     map[nmaps][i][j]=troca;
                     tds.className="coin";
                     tempcoins[ncoins][0]=tempid;
