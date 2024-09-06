@@ -29,7 +29,7 @@ To run this game, you will need a local server environment that can run PHP. Her
 1. **Clone or download the repository:**
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/Mourinhom6/MazeGame.git
 
 Or, download the ZIP file and extract it to your desired location.
 
@@ -44,7 +44,13 @@ If you are using XAMPP, place the files in the **'htdocs'** folder. For AMPPS, u
 2. Open your browser and navigate to:
 
    ```bash
-   http://localhost/index.php
+   http://localhost/Index.php
+
+
+3. To Use or see the Back Office open your browser and navigate to:
+
+   ```bash
+   http://localhost/BackOffice.php
 
 Ensure that your local server is running; otherwise, the PHP content will not load.
 
