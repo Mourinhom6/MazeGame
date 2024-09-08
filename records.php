@@ -5,7 +5,7 @@
 	<title>Maze Your Way©</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<link rel="stylesheet" href="Index.css">
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
     <?php
@@ -23,7 +23,7 @@
     ?>
     <script>
         function gobacker(){
-            window.location.href="Index.php";
+            window.location.href="index.php";
         }
     </script>
     <div id="header">
@@ -93,7 +93,7 @@
 		</div>
 	</div>
     
-    <script src="Index.js"></script>
+    <script src="index.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

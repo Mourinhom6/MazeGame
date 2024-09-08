@@ -6,6 +6,7 @@ A simple game developed in PHP. The game is easy to set up and run locally on yo
 ## Table of Contents
 
 - [Getting Started](#getting-started)
+- [Try the Game](#try-game)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,6 +16,10 @@ A simple game developed in PHP. The game is easy to set up and run locally on yo
 ## Getting Started
 
 Follow these instructions to get a copy of the game up and running on your local machine for development and testing purposes.
+
+## Try the game
+If you have any doubts about my game why don't you come and try it out:
+- [Maze Game](http://mazegame.rf.gd/)
 
 ## Prerequisites
 
@@ -44,13 +49,13 @@ If you are using XAMPP, place the files in the **'htdocs'** folder. For AMPPS, u
 2. Open your browser and navigate to:
 
    ```bash
-   http://localhost/Index.php
+   http://localhost/index.php
 
 
 3. To Use or see the Back Office open your browser and navigate to:
 
    ```bash
-   http://localhost/BackOffice.php
+   http://localhost/backoffice.php
 
 Ensure that your local server is running; otherwise, the PHP content will not load.
 
@@ -59,10 +64,10 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## Images
 
-![Inicial Page](Maze_FisrtPage.png) 
+![Inicial Page](maze_fisrtpage.png) 
 
 
-![Game Layout](Maze_Game_Layout.png) 
+![Game Layout](maze_game_layout.png) 
 
 ## License
 
