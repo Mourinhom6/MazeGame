@@ -64,10 +64,10 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## Images
 
-![Inicial Page](Maze_fisrtpage.png) 
+![Inicial Page](Maze_FisrtPage.png) 
 
 
-![Game Layout](Maze_game_layout.png) 
+![Game Layout](Maze_Game_Layout.png) 
 
 ## License
 
